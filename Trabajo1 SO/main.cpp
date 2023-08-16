@@ -58,36 +58,34 @@ int main(int argc, char* argv[]){
             break;
         }
 
+        // Este if verifica que las opciones sea 1 o 2 o 3 o 4
+        if (eleccion >=1 && eleccion <=4){
+            // Este if verifica que la eleccion este en el vector permisos de BD.txt
 
-        // Este if verifica que la eleccion este en el vector permisos de BD.txt
-        if (find(permisos.begin(), permisos.end(), eleccion) != permisos.end()){
-            switch (eleccion) {
-                case 1:
-                    cout << "La suma de su vector v es: " << accumulate(vector.begin(), vector.end(), 0) << endl;
-                    cout << endl;
-                    break;
-                case 2:
-                    cout << "El promedio de su vector v es: " << 
-                    static_cast<double>(accumulate(vector.begin(), vector.end(), 0)) / vector.size() << endl;
-                    cout << endl;
-                    break;
-                case 3:
-                    cout << "La moda de su vector v es: " << calcularModa(vector) << endl;
-                    cout << endl;
-                    break;
-                case 4:
-                    cout << "Usted tiene " << vector.size() << " elementos en su vector" << endl;
-                    cout << endl;
-                    break;
-                default:
-                    cout << "Opcion no disponible." << endl;
-                    cout << endl;
-                    break;
+            if (find(permisos.begin(), permisos.end(), eleccion) != permisos.end()){
+                switch (eleccion) {
+                    case 1:
+                        cout << "La suma de su vector v es: " << accumulate(vector.begin(), vector.end(), 0) << endl;
+                        break;
+                    case 2:
+                        cout << "El promedio de su vector v es: " << 
+                        static_cast<double>(accumulate(vector.begin(), vector.end(), 0)) / vector.size() << endl;
+                        break;
+                    case 3:
+                        cout << "La moda de su vector v es: " << calcularModa(vector) << endl;
+                        break;
+                    case 4:
+                        cout << "Usted tiene " << vector.size() << " elementos en su vector" << endl;
+                        break;
+                }
+            } else {
+                cout << "No tiene permiso para escoger la opcion " << eleccion << endl;
             }
+            
         } else{
-            cout << "No tiene permiso para escoger la opcion " << eleccion << endl;
-            cout << endl;
+            cout << "Opción no disponible!!" << endl;
         }
+        cout << endl;
     }
     cout << endl;
 
@@ -104,6 +102,7 @@ int main(int argc, char* argv[]){
         cout << "Ingrese '0' para NO" << endl;
         cout << "¿Cuál?: ";
         cin >> agregar;
+        cout << endl;
 
         if (agregar == "1") {
             string nuevoElemento;
@@ -112,17 +111,18 @@ int main(int argc, char* argv[]){
             getline(cin, nuevoElemento);
             archivo << nuevoElemento << endl;
             cout << "Agregado!!" << endl;
-            cout << endl;
         } else if (agregar == "0") {
             break;
         } else {
             cout << "Entrada no válida. Ingrese '1' o '0'." << endl;
         }
+        cout << endl;
     }
 
     archivo.close();
     cout << "Elementos agregados al archivo." << endl;
-
+    cout << "Programa terminado exitosamente!!" << endl;
+    cout << endl;
     return EXIT_SUCCESS;
 }
 
@@ -169,7 +169,6 @@ vector<int> convertirlo(const string& v) {
 int calcularModa(const vector<int>& numeros) {
     vector<int> numerosOrdenados = numeros;
     sort(numerosOrdenados.begin(), numerosOrdenados.end());
-
     int moda = 0;
     int maxFrecuencia = 0;
     int currentFrecuencia = 1;
@@ -186,8 +185,5 @@ int calcularModa(const vector<int>& numeros) {
             moda = numerosOrdenados[i];
         }
     }
-
     return moda;
 }
-
-
