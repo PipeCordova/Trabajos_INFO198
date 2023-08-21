@@ -10,7 +10,7 @@ El programa consiste en ingresar un usuario **u**, un vector **v**, un nombre de
 - Una vez se abrá la terminal, escriba el comando: make
 
 # Comando para ejecutar
-Escriba ./prog -u NombreUsuario -v Vector -f NombreArchivo -t "TextoAgregar"
+Escriba ./prog -u NombreUsuario -v Vector -f NombreArchivo -t "TextoAgregar"  
 Donde:
   - NombreUsuario es su nombre de usuario el cual será verificado si existe en la BD.
   - Vector es un vector de la forma a,b,c,d,...,z de enteros.
