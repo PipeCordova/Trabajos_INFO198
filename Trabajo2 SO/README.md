@@ -4,7 +4,7 @@ El programa consiste en ingresar un usuario **u**, un vector **v**, un nombre de
 
 # Comando para compilar
 - Diríjase a su editor favorito y clone este repositorio con el comando: git clone <link>
-- Abra la carpeta **Trabajo2 S0** y vaya a su terminal correspondiente.
+- Abra la carpeta **Trabajo2 SO** y vaya a su terminal correspondiente.
 - Una vez en la terminal, escriba: make
 
 # Comando para ejecutar
