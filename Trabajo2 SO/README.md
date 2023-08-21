@@ -3,8 +3,10 @@
 El programa consiste en ingresar un usuario **u**, un vector **v**, un nombre de archivo **f** y un texto **t** para agregar al archivo. Se verifica que el usuario exista en la Base de Datos **BD.txt** y que el nombre de archivo ingresado no exista en la carpeta **Trabajo2 SO**. Una vez validada la entrada, se muestra en pantalla las opciones disponibles leídas desde **menu.txt** y se muestra en pantalla los resultados correspondientes. El programa termina dando la opción de agregar mas usuario a la Base de datos.  
 
 # Comando para compilar
-- Diríjase a su editor favorito y clone este repositorio con el comando: git clone https://github.com/PipeCordova/Trabajos_INFO198_2023_II.git
-- Abra la carpeta **Trabajo2 SO** y vaya a su terminal correspondiente.
+- Diríjase a su editor favorito.
+- Clone este repositorio con el comando: git clone https://github.com/PipeCordova/Trabajos_INFO198_2023_II.git
+- Abra la carpeta **Trabajo2 SO**.
+- De click derecho encima del la carpeta mencionada y seleccione la opción **Open in Integrated Terminal**.
 - Una vez en la terminal, escriba: make
 
 # Comando para ejecutar
