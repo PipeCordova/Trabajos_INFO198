@@ -1,6 +1,6 @@
 # Trabajo 2 Sistemas Operativos
 
-El programa consiste en ingresar un usuario **u**, un vector **v**, un nombre de archivo **f** y un texto **t** para agregar al archivo. Se verifica que el usuario exista en la Base de Datos **BD.txt** y que el nombre de archivo ingresado no exista en la carpeta **Trabajo2 SO**. Una vez validada la entrada, se muestra en pantalla las opciones disponibles leídas desde **menu.txt** y se muestra en pantalla los resultados correspondientes. El programa termina dando la opción de agregar mas usuario a la Base de datos.  
+El programa consiste en ingresar un usuario **u**, un vector **v**, un nombre de archivo **f** y un texto **t** para agregar al archivo. Se verifica que el usuario exista en la Base de Datos **BD.txt** y que el nombre de archivo ingresado no exista en la carpeta **Trabajo2 SO**. Una vez validada la entrada, se muestra en pantalla las opciones disponibles leídas desde **menu.txt** y se muestra en pantalla los resultados correspondientes de acuerdo a lo seleccionado. El programa termina dando la opción de agregar mas usuario a la Base de datos.  
 
 # Comando para compilar
 - Diríjase a su editor favorito.
