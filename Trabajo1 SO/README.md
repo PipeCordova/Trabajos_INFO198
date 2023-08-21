@@ -1,6 +1,6 @@
 # Trabajo 1 Sistemas Operativos
 
-El programa consiste en ingresar un usuario **u** y un vector v. Se verifica que el usuario exista en la Base de Datos BD.txt para asi poder realizar las 4 operaciones disponibles en opciones.txt con el vector y tambien se comprueba que el usuario tenga los permisos necesarios para realizar las operaciones que quiere. Se imprime en pantalla los resultados correspondiente y finalmente se da la opción de agregar mas datos a BD.txt.
+El programa consiste en ingresar un usuario u y un vector v. Se verifica que el usuario exista en la Base de Datos BD.txt para asi poder realizar las 4 operaciones disponibles en opciones.txt con el vector y tambien se comprueba que el usuario tenga los permisos necesarios para realizar las operaciones que quiere. Se imprime en pantalla los resultados correspondiente y finalmente se da la opción de agregar mas datos a BD.txt.
 
 # Comando para compilar
 Escriba 'make' en el directorio correspondiente.
