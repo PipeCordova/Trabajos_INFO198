@@ -4,7 +4,7 @@ El programa consiste en ingresar un usuario **u**, un vector **v**, un nombre de
 
 # Comando para compilar
 - Diríjase a su editor favorito.
-- Clone este repositorio con el comando: git clone https://github.com/PipeCordova/Trabajos_INFO198_2023_II.git
+- Clone este repositorio, escibiendo en la consola el comando: git clone https://github.com/PipeCordova/Trabajos_INFO198_2023_II.git
 - Abra la carpeta **Trabajo2 SO**.
 - De click derecho encima del la carpeta mencionada y seleccione la opción **Open in Integrated Terminal**.
 - Una vez se abrá la terminal, escriba el comando: make
