@@ -67,14 +67,16 @@ int calcularModa(const vector<int>& numeros) {
     return moda;
 }
 
-void crearArchivo(const string& nombreArchivo) {
-    ofstream archivo(nombreArchivo);
-    if (archivo.is_open()) {
-        archivo.close();
-        cout << "Archivo creado exitosamente: " << nombreArchivo << endl;
-    } else {
-        cerr << "No se pudo crear el archivo: " << nombreArchivo << endl;
+void crearArchivo(const string &rutaCompleta, const string &contenido) {
+    ofstream archivo(rutaCompleta);
+    if (!archivo) {
+        cerr << "Error al abrir el archivo" << endl;
+        exit(EXIT_FAILURE);
     }
+    
+    archivo << contenido;
+    
+    cout << "Archivo '" << rutaCompleta << "' creado exitosamente!!" << endl << endl;
 }
 
 void agregarLineaArchivo(const string& nombreArchivo, const string& linea) {
@@ -82,8 +84,8 @@ void agregarLineaArchivo(const string& nombreArchivo, const string& linea) {
     if (archivo.is_open()) {
         archivo << linea << endl;
         archivo.close();
-        cout << "Línea agregada al archivo: " << nombreArchivo << endl;
+        cout << "Línea agregada al archivo: " << nombreArchivo << endl << endl;
     } else {
-        cerr << "No se pudo abrir el archivo: " << nombreArchivo << endl;
+        cerr << "No se pudo abrir el archivo: " << nombreArchivo << endl << endl;
     }
 }
