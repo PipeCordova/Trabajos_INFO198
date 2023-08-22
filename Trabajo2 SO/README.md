@@ -10,11 +10,11 @@ El programa consiste en ingresar un usuario **u**, un vector **v**, un nombre de
 - Una vez se abrá la terminal, escriba el comando: make
 
 # Comando para ejecutar
-Escriba ./prog -u NombreUsuario -v Vector -f NombreArchivo -t "TextoAgregar"  
+Escriba ./prog -u NombreUsuario -v Vector -f "/ruta_completa/{nombre_directorio}/{nombre_subdirectorio}/nombre_archivo.{extension}" -t "TextoAgregar"  
 Donde:
   - NombreUsuario es su nombre de usuario el cual será verificado si existe en la BD.
   - Vector es un vector de la forma a,b,c,d,...,z de enteros.
-  - NombreArchivo es el nombre de su nuevo archivo que se crea dentro del programa si es que lo selecciona.
+  - /ruta_completa/{nombre_directorio}/{nombre_subdirectorio}/nombre_archivo.{extension} Es la ubicación donde quiere que se genere su archivo.  **Notar que debe ir entre comillas el texto.**
   - "TextoAgregar" es el texto que desea agregar al archivo creado. **Notar que debe ir entre comillas el texto.**
 
 # Explicación de la Base de Datos  
