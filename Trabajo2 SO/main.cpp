@@ -33,28 +33,24 @@ int main(int argc, char* argv[]){
     El else if verifica que el nombre del archivo que viene en el parametro -f no este creado ya en la carpeta.*/
     
     vector<int> permisos; // Se crea un vector con los permisos del usuario u
-    ifstream archivoTexto(f + ".txt");
     if (!usuarioExiste(u, "BD.txt", permisos)) {
         cout << "Usuario No encontrado en la Base de Datos!!" << endl << endl;
         exit(EXIT_FAILURE);
-    } else if (archivoTexto.good()) {
-        cout << "El archivo ya existe!!" << endl;
-        cout << "Programa terminado!!" << endl << endl;
-        exit(EXIT_FAILURE);
     }
+
+
 
     vector<int> vector = convertirlo(v); // aqui se convierte a vector el string v
     
     cout << endl;
 
     // Aqui comienza la iteracion con el usuario
+
     int eleccion;
-    string texto;
-
-    int cont = 0;
-
+    
     while (true) {
         ifstream archivo("menu.txt");
+        ifstream archivoTexto(f);
         string linea;
 
         cout << "Opciones disponibles:" << endl;
@@ -70,52 +66,44 @@ int main(int argc, char* argv[]){
             break;
         }
 
-        // Este if verifica que las opciones sea 1 o 2 o 3 o 4
-        if (eleccion >=1 && eleccion <=4){
-            // Este if verifica que la eleccion este en el vector permisos de BD.txt
+        // Este if verifica que la eleccion este en el vector permisos de BD.txt
 
-            if (find(permisos.begin(), permisos.end(), eleccion) != permisos.end()){
-                switch (eleccion) {
-                    case 1:
-                        cout << "La suma de su vector v es: " << accumulate(vector.begin(), vector.end(), 0) << endl;
-                        break;
-                    case 2:
-                        cout << "El promedio de su vector v es: " << 
-                        static_cast<double>(accumulate(vector.begin(), vector.end(), 0)) / vector.size() << endl;
-                        break;
-                    case 3:
-                        cout << "La moda de su vector v es: " << calcularModa(vector) << endl;
-                        break;
-                    case 4:
-                        cout << "Usted tiene " << vector.size() << " elementos en su vector" << endl;
-                        break;
-                }
-            } else {
-                cout << "No tiene permiso para escoger la opcion " << eleccion << endl;
-            }
-            
-        } else{
-            switch (eleccion){
+        if (find(permisos.begin(), permisos.end(), eleccion) != permisos.end()){
+            switch (eleccion) {
+                case 1:
+                    cout << "La suma de su vector v es: " << accumulate(vector.begin(), vector.end(), 0) << endl << endl;
+                    break;
+                case 2:
+                    cout << "El promedio de su vector v es: " << 
+                    static_cast<double>(accumulate(vector.begin(), vector.end(), 0)) / vector.size() << endl << endl;
+                    break;
+                case 3:
+                    cout << "La moda de su vector v es: " << calcularModa(vector) << endl << endl;
+                    break;
+                case 4:
+                    cout << "Usted tiene " << vector.size() << " elementos en su vector" << endl << endl;
+                    break;
                 case 5:
-                    crearArchivo(f + ".txt");
+                    if (archivoTexto.is_open()) {
+                        cout << "El archivo ya existe!!" << endl << endl;
+                    } else { 
+                        crearArchivo(f,t);
+                    }
                     break;
                 case 6:
-                    if (cont == 0) {
-                        agregarLineaArchivo(f + ".txt", t);
-                        cont++;
-                    } else if (cont >= 1) {
-                        cout << "Ingrese linea a agregar: ";
-                        cin.ignore();  // Limpia el buffer antes de getline
-                        getline(cin, texto);
-                        agregarLineaArchivo(f + ".txt", texto);
+                    if (!archivoTexto.is_open()){
+                        cout << "El archivo NO existe!!" << endl << endl;
+                    } else{
+                        agregarLineaArchivo(f,t);
                     }
                     break;
                 default:
                     cout << "Opcion " << eleccion << " aun no ha sido implementada!" << endl;
                     break;
                 }
+        } else {
+            cout << "No tiene permiso para escoger la opcion " << eleccion << endl << endl;
         }
-        cout << endl;
     }
     cout << endl;
 
