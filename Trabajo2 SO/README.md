@@ -14,7 +14,7 @@ Escriba ./prog -u NombreUsuario -v Vector -f NombreArchivo -t "TextoAgregar"
 Donde:
   - NombreUsuario es su nombre de usuario el cual será verificado si existe en la BD.
   - Vector es un vector de la forma a,b,c,d,...,z de enteros.
-  - NombreArchivo es el nombre de su nuevo archivo que se crea dentro del programa.
+  - NombreArchivo es el nombre de su nuevo archivo que se crea dentro del programa si es que lo selecciona.
   - "TextoAgregar" es el texto que desea agregar al archivo creado. **Notar que debe ir entre comillas el texto.**
 
 # Explicación de la Base de Datos  
