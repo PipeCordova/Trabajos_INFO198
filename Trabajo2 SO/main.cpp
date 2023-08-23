@@ -138,7 +138,6 @@ int main(int argc, char* argv[]){
     }
 
     archivo.close();
-    cout << "Elementos agregados al archivo." << endl;
     cout << "Programa terminado exitosamente!!" << endl;
     cout << endl;
     return EXIT_SUCCESS;
