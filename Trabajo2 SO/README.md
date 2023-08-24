@@ -1,12 +1,25 @@
 # Trabajo 2 Sistemas Operativos
-
 Este README tiene como objetivo proporcionar instrucciones detalladas para reconstruir y ejecutar "Mi Aplicación". Incluso si pierdes el código y los datos, estas instrucciones te permitirán volver a poner en marcha el sistema.  
 
 # Descripción  
 El programa consiste en ingresar un usuario u; un vector v; un path/nombre de un archivo a crear f y un texto t. Se verifica que el usuario exista en la Base de Datos BD.txt y se guardan sus permisos correspondientes para asi poder realizar las operaciones las cuales tiene disponible. Se imprime en pantalla los resultados hasta que el usuario ingresa el entero 0, el cual significa que termina la interacción. Finalmente se da la opción de agregar mas datos a BD.txt. **Se asume que ingresará nuevos usuarios y permisos de la forma correcta**.
 
-# Requisitos Previos
+# Estructura de Archivos
+Esta aplicación ha sido desarrollada de manera modular para facilitar la flexibilidad y la personalización. El programa esta estructurado de la siguiente manera:
+  - **main.cpp**: Código principal el cual se encarga del flujo total de la aplicación.
+  - **procEntrada.cpp**: Código que se encarga de validar que el usuario u exista en la Base de Datos BD.txt y extrae todos sus permisos.
+  -   **operarVector.cpp**: Código el cual esta implementada la funcion que retorna la moda del vector v ingresado, es decir, se invoca cuando se selecciona la opción 3) de la Base de Datos menu.txt. Notar que las demas operaciones disponibles con el vector se hicieron utilizando funciones de las bibliotecas disponibles que ofrece C++.
+  -   **operarArchivo.cpp**: Código el cual se realizan las operaciones 5) y 6) de la Base de Datos menu.txt. Ademas permite agregar mas usuarios a la Base de datos BD.txt.
+  -   **loopConUsuario.cpp**: Código el cual contiene la interacción con el usuario y realiza las operaciones que selecciona.
+  -   **metodos.h**: Un archivo de tipo .h el cual contiene la declaración de todos los metodos utilizados en esta aplicación.
+  -   **Makefile**: Un Makefile disponible para automatizar y gestionar el proceso de compilación.
 
+# Base de Datos 
+La aplicación contiene 2 archivos **.txt** los cuales cumplen la función de ser la Base de datos. A continuación una breve descripción:
+  - **BD.txt**: Archivo el cual contiene el nombre de usuario u y sus permisos correspondientes, los cuales son su disponibilidad para realizar cada operación. Notar que esta Base de Datos da salto de linea cada vez que se tiene lo requerido.
+  - **menu.txt**: Archivo el cual contiene el menú desplegable que se muestra en pantalla, es la información que el usuario necesita para elegir una operación a realizar. No olvidar que antes de realizar la operación se verifica que el usuario tenga los permisos para poder realizarla. Este menú desplegable se limpia de la consola automaticamente luego de 10 segundos de mostrar el resultado de la operación, lo cual es mas amigable para el usuario que lo esta ejecutando.
+
+# Requisitos Previos
 De preferencia:
   - Sistema: Operativo Ubuntu/Linux
   - Editor: Visual Studio Code https://code.visualstudio.com/
