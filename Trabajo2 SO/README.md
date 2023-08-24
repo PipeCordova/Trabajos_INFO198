@@ -5,7 +5,7 @@ Este README tiene como objetivo proporcionar instrucciones detalladas para recon
 El programa consiste en ingresar un usuario u; un vector v; un path/nombre de un archivo a crear f y un texto t. Se verifica que el usuario exista en la Base de Datos BD.txt y se guardan sus permisos correspondientes para asi poder realizar las operaciones en las cuales tiene disponible. Se imprime en pantalla los resultados hasta que el usuario ingresa el entero 0, el cual significa que termina la interacción con las operaciones. Finalmente se da la opción de agregar mas datos a BD.txt. **Se asume que ingresará nuevos usuarios y permisos de la forma correcta**.
 
 # Estructura de Archivos
-Esta aplicación ha sido desarrollada de manera modular para facilitar la flexibilidad y la personalización. El programa esta estructurado de la siguiente manera:
+Esta aplicación ha sido desarrollada de manera modular para facilitar la compresión y la modificación para mejoras en el futuro. El programa esta estructurado de la siguiente manera:
   - **main.cpp**: Código principal el cual se encarga del flujo total de la aplicación.
   - **procEntrada.cpp**: Código que se encarga de validar que el usuario u exista en la Base de Datos BD.txt y extrae todos sus permisos.
   -   **operarVector.cpp**: Código el cual esta implementada la funcion que retorna la moda del vector v ingresado, es decir, se invoca cuando se selecciona la opción 3) de la Base de Datos menu.txt. Notar que las demas operaciones disponibles con el vector se hicieron utilizando funciones de las bibliotecas disponibles que ofrece C++.
