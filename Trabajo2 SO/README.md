@@ -18,10 +18,17 @@ De preferencia:
 Note que se habrá creado un ejecutable **prog** en la carpeta, esto quiere decir que esta listo para ejecutar.
 
 # Pasos para ejecutar
-Considere ahora la forma de la entrada es: **./prog -u nombreUsuario -v vector -f /home/Escritorio/Carpeta/nombre.{extension} -t "Texto"**, donde:
-  - **nombreUsuario** Es su nombre de usuario, el cual sera verificado si existe en la Base de Datos **BD.txt**. Note que su nombre se usuario debe ir sin espacios.
-  - **vector** Es un vector de la forma **a,b,c,...,z**, donde cada elemento es de tipo entero. **Note que debe ingresar cada entero separado por una coma **,** **
-  - 
+Considere ahora la forma de la entrada es: **./prog -u nombreUsuario -v vector -f "path/nombre" -t "Texto"**, donde:
+  - **nombreUsuario** Es su nombre de usuario, el cual sera verificado si existe en la Base de Datos BD.txt. **Note que su nombre se usuario debe ir sin espacios.**
+  - **vector** Es un vector de la forma **a,b,c,...,z**, donde cada elemento es de tipo entero. **Note que debe ingresar cada entero separado por una coma.**
+  - **path/nombre** Es la ruta exacta donde se creará el archivo correspondiente si lo selecciona. Siendo **path** la ruta y **nombre** el nombre del archivo con su respectiva extensión.
+    Por ejemplo: /home/nombreEquipo/Escritorio/Carpeta Favorita/nombre.txt
+
+    **Notar que puede ser cualquier extensión, no necesariamente txt**
+
+    
+
+    
 
 
 
