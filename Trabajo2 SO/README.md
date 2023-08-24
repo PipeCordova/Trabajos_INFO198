@@ -43,6 +43,7 @@ Considere ahora la forma de la entrada es: **./prog -u nombreUsuario -v vector -
       - path sería **/home/nombreEquipo/Escritorio/Carpeta Favorita**, ya que es la ruta donde queremos que se guarde el archivo.
       - nombre sería **holaMundo.txt**, ya que es el nombre del archivo que queremos con su extensión, ya sea .txt, .csc, .py, etc.  
 Una vez con la entrada clara, ejecute de la forma mencionada.
+  - **Texto** Es el texto que se agregará en el archivo creado en la ruta ingresada. **Note que si el archivo existe, no crea otro archivo, solo agregará el texto en la última linea de ese archivo ya existente. En caso de no existir, creará el archivo y agregará el texto.**
 
 
   
