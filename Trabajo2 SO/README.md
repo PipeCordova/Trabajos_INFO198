@@ -15,8 +15,8 @@ Esta aplicación ha sido desarrollada de manera modular para facilitar la compre
   -   **Makefile**: Un Makefile disponible para automatizar y gestionar el proceso de compilación.
 
 # Base de Datos 
-La aplicación contiene 2 archivos **.txt** los cuales cumplen la función de ser la Base de datos. A continuación una breve descripción:
-  - **BD.txt**: Archivo el cual contiene el nombre de usuario u y sus permisos correspondientes, los cuales son su disponibilidad para realizar cada operación. Notar que esta Base de Datos da salto de linea cada vez que se tiene lo requerido.
+La aplicación contiene 2 archivos **.txt** los cuales cumplen la función de ser la Base de Datos. A continuación una breve descripción:
+  - **BD.txt**: Archivo el cual contiene el nombre de usuario u y sus permisos correspondientes, los cuales son su disponibilidad para realizar cada operación. Notar que esta Base de Datos da salto de linea con cada usuario distinto.
   - **menu.txt**: Archivo el cual contiene el menú desplegable que se muestra en pantalla, es la información que el usuario necesita para elegir una operación a realizar. No olvidar que antes de realizar la operación se verifica que el usuario tenga los permisos para poder realizarla. Este menú desplegable se limpia de la consola automaticamente luego de 10 segundos de mostrar el resultado de la operación, lo cual es mas amigable para el usuario que lo esta ejecutando.
 
 # Requisitos Previos
