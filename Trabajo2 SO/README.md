@@ -6,4 +6,4 @@ Este README tiene como objetivo proporcionar instrucciones detalladas para recon
 
 De preferencia:
   - Sistema Operativo Ubuntu/Linux
-  - Editor: vscode (https://code.visualstudio.com/)
+  - Editor: Visual Studio Code https://code.visualstudio.com/
