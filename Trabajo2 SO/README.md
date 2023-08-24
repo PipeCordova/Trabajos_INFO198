@@ -9,7 +9,7 @@ Esta aplicación ha sido desarrollada de manera modular para facilitar la compre
   - **main.cpp**: Código principal el cual se encarga del flujo total de la aplicación.
   - **procEntrada.cpp**: Código que se encarga de validar que el usuario u exista en la Base de Datos BD.txt y extrae todos sus permisos.
   -   **operarVector.cpp**: Código el cual esta implementada la funcion que retorna la moda del vector v ingresado, es decir, se invoca cuando se selecciona la opción 3) de la Base de Datos menu.txt. Notar que las demas operaciones disponibles con el vector se hicieron utilizando funciones de las bibliotecas disponibles que ofrece C++.
-  -   **operarArchivo.cpp**: Código el cual se realizan las operaciones 5) y 6) de la Base de Datos menu.txt. Ademas permite agregar mas usuarios a la Base de datos BD.txt.
+  -   **operarArchivo.cpp**: Código el cual se realizan las operaciones 5) y 6) de la Base de Datos menu.txt. Ademas permite agregar mas usuarios a la Base de datos BD.txt si es que el usuario lo desea.
   -   **loopConUsuario.cpp**: Código el cual contiene la interacción con el usuario y realiza las operaciones que selecciona.
   -   **metodos.h**: Un archivo de tipo .h el cual contiene la declaración de todos los metodos utilizados en esta aplicación.
   -   **Makefile**: Un Makefile disponible para automatizar y gestionar el proceso de compilación.
