@@ -3,7 +3,7 @@
 Este README tiene como objetivo proporcionar instrucciones detalladas para reconstruir y ejecutar "Mi Aplicación". Incluso si pierdes el código y los datos, estas instrucciones te permitirán volver a poner en marcha el sistema.  
 
 # Descripción  
-El programa consiste en ingresar un usuario $U$, un vector v. Se verifica que el usuario exista en la Base de Datos BD.txt para asi poder realizar las 4 operaciones disponibles en opciones.txt con el vector y tambien se comprueba que el usuario tenga los permisos necesarios para realizar las operaciones que quiere. Se imprime en pantalla los resultados correspondiente y finalmente se da la opción de agregar mas datos a BD.txt.
+El programa consiste en ingresar un usuario u; un vector v; un path/nombre de un archivo a crear f y un texto t. Se verifica que el usuario exista en la Base de Datos BD.txt y se guardan sus permisos correspondientes para asi poder realizar las operaciones las cuales tiene disponible. Se imprime en pantalla los resultados y finalmente se da la opción de agregar mas datos a BD.txt. **Se asume que ingresará nuevos usuarios y permisos de la forma correcta**.
 
 # Requisitos Previos
 
