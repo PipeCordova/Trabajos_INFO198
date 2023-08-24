@@ -1,6 +1,0 @@
-Pipe 0,1,2,3,4,5,6
-Clarita 0,1,2,4,6
-LuisVeas 0,3,4,5
-Seba 0,3,4,5,6
-Tomas 0,1,4,5
-Renato 0,3,4,6
