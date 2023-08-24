@@ -1,5 +1,5 @@
 # Trabajo 2 Sistemas Operativos
-Este README tiene como objetivo proporcionar instrucciones detalladas para reconstruir y ejecutar "Mi Aplicación". Incluso si pierdes el código y los datos, estas instrucciones te permitirán volver a poner en marcha el sistema.  
+Este README tiene como objetivo proporcionar instrucciones detalladas para reconstruir y ejecutar "Mi Aplicación". Incluso si pierdes el código y las Base de Datos, estas instrucciones te permitirán volver a poner en marcha el sistema.  
 
 # Descripción  
 El programa consiste en ingresar un usuario u; un vector v; un path/nombre de un archivo a crear f y un texto t. Se verifica que el usuario exista en la Base de Datos BD.txt y se guardan sus permisos correspondientes para asi poder realizar las operaciones las cuales tiene disponible. Se imprime en pantalla los resultados hasta que el usuario ingresa el entero 0, el cual significa que termina la interacción. Finalmente se da la opción de agregar mas datos a BD.txt. **Se asume que ingresará nuevos usuarios y permisos de la forma correcta**.
