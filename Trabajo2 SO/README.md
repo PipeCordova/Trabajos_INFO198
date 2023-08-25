@@ -21,7 +21,7 @@ La aplicación contiene 2 archivos **.txt** los cuales cumplen la función de se
 
 # Requisitos Previos
 De preferencia:
-  - Sistema: Operativo Ubuntu/Linux
+  - Sistema Operativo: Ubuntu/Linux
   - Editor: Visual Studio Code https://code.visualstudio.com/
 
 # Pasos para compilar
