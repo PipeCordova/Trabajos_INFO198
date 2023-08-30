@@ -54,6 +54,6 @@ Una vez con la entrada clara, ejecute de la forma mencionada.
   - **path/nombre3** Es la ruta exacta donde quiere que se guarde el archivo de salida (output) al seleccionar la opcion 7 de la aplicación, osea, contar la cantidad de veces que se repite una palabra. 
 
 
-Un ejemplo de ejecución sería: ./prog -u Pipe -v 1,2,3,4,5 -f "/home/felipe/Escritorio/Sistemas Operativos/probando archivos/jajajaj.txt" -t "holaMundo" -i "/home/felipe/Escritorio/Sistemas Operativos/Semana 3/Trabajo_3_SO/input_output/cuento" -o "/home/felipe/Escritorio/Sistemas Operativos/Semana 3/Trabajo_3_SO/input_output/salida"
+**Un ejemplo de ejecución sería:** ./prog -u Pipe -v 1,2,3,4,5 -f "/home/felipe/Escritorio/Sistemas Operativos/probando archivos/jajajaj.txt" -t "holaMundo" -i "/home/felipe/Escritorio/Sistemas Operativos/Semana 3/Trabajo_3_SO/input_output/cuento" -o "/home/felipe/Escritorio/Sistemas Operativos/Semana 3/Trabajo_3_SO/input_output/salida"
 
   
