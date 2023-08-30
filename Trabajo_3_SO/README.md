@@ -15,6 +15,7 @@ El programa esta estructurado de forma modular de la siguiente manera:
   - **vectorPermisos.cpp**: Se encarga de retornar un vector con los permisos respectivos al usuario ingresado. Esto lo extrae desde la Base de Datos menu.txt.
   - **procesarCuento.cpp**: Código que se encarga de realizar la operación 7), osea de contar la cantidad de veces que repite cada palabra en el texto de entrada -i.  
   -   **metodos.h**: Un archivo de tipo .h el cual contiene la declaración de todos los metodos utilizados en esta aplicación.
+  -   **PATHS.env**: Este archivo contiene las variables de las rutas completas (path + archivo) de las diferentes bases de datos del sistema. Este tipo de variables NO estan en duro en el código fuente.
   -   **Makefile**: Un Makefile disponible para automatizar y gestionar el proceso de compilación.
 
 # Base de Datos 
