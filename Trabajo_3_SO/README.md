@@ -15,7 +15,7 @@ El programa esta estructurado en la carpeta **archivosCPP** de forma modular de 
   - **procesarCuento.cpp**: Código que se encarga de realizar la operación 7), osea de contar la cantidad de veces que repite cada palabra en el texto de entrada -i.  
   -   **metodos.h**: Un archivo de tipo .h el cual contiene la declaración de todos los metodos utilizados en esta aplicación.
 
-# Estas implementaciones se encuentran fuera de la carpeta **archivosCPP**, para una mejor compresión del trabajo.  
+Estas implementaciones se encuentran fuera de la carpeta **archivosCPP**, para una mejor compresión del trabajo.  
 
   - **main.cpp**: Programa principal que se encarga del flujo total del programa.  
   
