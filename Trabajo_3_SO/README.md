@@ -6,8 +6,7 @@ Este README tiene como objetivo proporcionar instrucciones detalladas para recon
 El programa consiste en ingresar un usuario u; un vector v; un path/nombre de un archivo a crear f; un texto t; un input path/nombre i y un output path/nombre o. Se verifica que el usuario u exista en la Base de Datos BD.txt y se vé que tipo de usuario es, este puede ser: admin, userGeneral o userRookie. Independiente cual sea su permiso, el programa lee la Base de Datos perfilesUsuarios.txt y extrae los permisos correspondientes al tipo de usuario mencionado. Se imprime en pantalla los resultados correspondientes hasta que el usuario ingresa el entero 0, el cual significa que termina la interacción con las operaciones. Finalmente se da la opción de agregar mas datos a BD.txt. **Se asume que ingresará nuevos usuarios y permisos de la forma correcta**. Por ejemplo: nombreUsuario admin
 
 # Estructura de Archivos
-El programa esta estructurado de forma modular de la siguiente manera:  
-  - **main.cpp**: Código principal el cual se encarga del flujo total de la aplicación.
+El programa esta estructurado en la carpeta **archivosCPP** de forma modular de la siguiente manera:  
   - **procEntrada.cpp**: Código que se encarga de validar que el usuario u exista en la Base de Datos BD.txt y extrae el tipo de usuario.
   - **operarVector.cpp**: Código el cual esta implementada la funcion que retorna la moda del vector v ingresado, es decir, se invoca cuando se selecciona la opción 3) de la Base de Datos menu.txt. Notar que las demás operaciones disponibles con el vector se hicieron utilizando funciones de las bibliotecas disponibles que ofrece C++.
   - **operarArchivo.cpp**: Código el cual se realizan las operaciones 5) y 6) de la Base de Datos menu.txt. Ademas permite agregar mas usuarios a la Base de datos BD.txt si es que el usuario lo desea.
@@ -15,6 +14,11 @@ El programa esta estructurado de forma modular de la siguiente manera:
   - **vectorPermisos.cpp**: Se encarga de retornar un vector con los permisos respectivos al usuario ingresado. Esto lo extrae desde la Base de Datos menu.txt.
   - **procesarCuento.cpp**: Código que se encarga de realizar la operación 7), osea de contar la cantidad de veces que repite cada palabra en el texto de entrada -i.  
   -   **metodos.h**: Un archivo de tipo .h el cual contiene la declaración de todos los metodos utilizados en esta aplicación.
+
+# Estas implementaciones se encuentran fuera de la carpeta **archivosCPP**, para una mejor compresión del trabajo.  
+
+  - **main.cpp**: Programa principal que se encarga del flujo total del programa.  
+  
   -   **PATHS.env**: Este archivo contiene las variables de las rutas completas (path + archivo) de las diferentes bases de datos del sistema. Este tipo de variables NO estan en duro en el código fuente.
   -   **Makefile**: Un Makefile disponible para automatizar y gestionar el proceso de compilación.
 
