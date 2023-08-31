@@ -13,17 +13,19 @@ El programa esta estructurado en la carpeta **archivosCPP** de forma modular de 
   - **loopConUsuario.cpp**: Código el cual contiene la interacción con el usuario y realiza las operaciones que selecciona.
   - **vectorPermisos.cpp**: Se encarga de retornar un vector con los permisos respectivos al usuario ingresado. Esto lo extrae desde la Base de Datos menu.txt.
   - **procesarCuento.cpp**: Código que se encarga de realizar la operación 7), osea de contar la cantidad de veces que repite cada palabra en el texto de entrada -i.  
-  -   **metodos.h**: Un archivo de tipo .h el cual contiene la declaración de todos los metodos utilizados en esta aplicación.
+  - **metodos.h**: Un archivo de tipo .h el cual contiene la declaración de todos los metodos utilizados en esta aplicación.
 
 A continuación se describen los archivos que estan fuera de la carpeta **archivosCPP**, para una mejor compresión del trabajo.  
 
   - **main.cpp**: Programa principal que se encarga del flujo total del programa.  
   
-  -   **PATHS.env**: Este archivo contiene las variables de las rutas completas (path + archivo) de las diferentes bases de datos del sistema. Este tipo de variables NO estan en duro en el código fuente.
-  -   **Makefile**: Un Makefile disponible para automatizar y gestionar el proceso de compilación.
+  - **PATHS.env**: Este archivo contiene las variables de las rutas completas (path + archivo) de las diferentes bases de datos del sistema. Este tipo de variables NO estan en duro en el código fuente.
+  -  **Makefile**: Un Makefile disponible para automatizar y gestionar el proceso de compilación.
+
+La carpeta input_output es una carpeta arbitraria, la cual puede cambiar dependiendo del usuario que este ejecutando la aplicación. En este caso se decidió subir a GitHub para una mejor claridad.   
 
 # Base de Datos 
-La aplicación contiene 3 archivos **.txt** los cuales cumplen la función de ser la Base de Datos. A continuación una breve descripción:
+La aplicación contiene 3 archivos **.txt** los cuales se encuentran en la carpeta **baseDeDatos**. A continuación una breve descripción:
   - **BD.txt**: Archivo el cual contiene el nombre de usuario u y su tipo de usuario. Notar que esta Base de Datos da salto de linea con cada usuario distinto.
 La forma de este archivo es: nombreUsuario admin
   - **menu.txt**: Archivo el cual contiene el menú desplegable que se muestra en pantalla, es la información que el usuario necesita para elegir una operación a realizar. No olvidar que antes de realizar la operación se verifica que el usuario tenga los permisos para poder realizarla. Este menú desplegable se limpia de la consola automaticamente luego de 5 segundos de mostrar el resultado de la operación, lo cual es mas amigable para el usuario que lo esta ejecutando.
