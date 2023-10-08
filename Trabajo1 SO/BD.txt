@@ -1,3 +1,0 @@
-Pipe 1,2,3,4
-Clarita 1,2,4
-LuisVeas 3,4

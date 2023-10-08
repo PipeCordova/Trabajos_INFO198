@@ -1,4 +1,0 @@
-1) Realizar sumatoria de un vector.
-2) Realizar promedio de un vector.
-3) Realizar moda de un vector.
-4) Contar elementos de un vector.
