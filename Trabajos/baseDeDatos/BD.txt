@@ -1,0 +1,7 @@
+Pipe userGeneral
+Clarita admin
+LuisVeas userGeneral
+Seba admin
+Tomas userRookie
+Renato userGeneral
+
