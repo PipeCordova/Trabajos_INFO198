@@ -1,15 +1,5 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <unistd.h>
-#include <algorithm>
-#include <numeric>
-#include "archivosCPP/metodos.h"
-#include <chrono>
-#include <thread> 
+#include "../include/metodos.h"
 
-using namespace std;
 
 int main(int argc, char *argv[]) {
     string u, v, f, t, i, o;
@@ -37,18 +27,14 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if (algunParametroVacio(u, "-u") ||
-        algunParametroVacio(v, "-v") ||
-        algunParametroVacio(f, "-f") ||
-        algunParametroVacio(t, "-t") ||
-        algunParametroVacio(i, "-i") ||
-        algunParametroVacio(o, "-o")) {
+    if (algunParametroVacio(u, "-u") || algunParametroVacio(v, "-v") || algunParametroVacio(f, "-f") ||
+        algunParametroVacio(t, "-t") || algunParametroVacio(i, "-i") || algunParametroVacio(o, "-o")) {
         exit(EXIT_FAILURE);
     }
 
-    // rutaPermisos = BD.txt , rutaMenu = menu.txt , rutaPerfiles = perfilesUsuarios.txt
-    string rutaPermisos, rutaMenu, rutaPerfiles;
-    leerConfiguracion(rutaPermisos, rutaMenu, rutaPerfiles);
+    string rutaPermisos = getenv("DB_PERMISOS");
+    string rutaMenu = getenv("DB_MENU");
+    string rutaPerfiles = getenv("DB_PERFILES_USUARIOS");
 
     
     // Aqui se guarda string que corresponde al permiso del usuario, osea: admin, userGeneral, userCookie.
@@ -99,7 +85,7 @@ int main(int argc, char *argv[]) {
         system("clear");
     }
 
-    agregarElementosBD(rutaPermisos);
-    cout << "Trabajo 3 terminado!!\n" << endl;
+    // agregarElementosBD(rutaPermisos);
+    cout << "Trabajo terminado!!\n" << endl;
     return EXIT_SUCCESS;
 }

@@ -1,11 +1,5 @@
-#include "metodos.h"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <numeric> 
+#include "../include/metodos.h"
 
-using namespace std;
 
 // Esto queda igual.
 int calcularModa(const vector<int>& numeros) {

@@ -1,11 +1,5 @@
-#include "metodos.h"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <numeric> 
+#include "../include/metodos.h"
 
-using namespace std;
 
 void crearArchivo(const string &rutaCompleta) {
     ofstream archivo(rutaCompleta);
@@ -36,26 +30,25 @@ void agregarElementosBD(const string &rutaPermisos) {
         return;
     }
 
-    string agregar;
+    int agregar;
     while (true) {
         cout << "¿Desea agregar elementos a la BASE DE DATOS?" << endl;
-        cout << "Ingrese '1' para SI" << endl;
-        cout << "Ingrese '0' para NO" << endl;
+        cout << "Ingrese 1 para SI ó 0 para NO: ";
         cout << "¿Cuál?: ";
         cin >> agregar;
         cout << endl;
 
-        if (agregar == "1") {
+        if (agregar == 1) {
             string nuevoElemento;
             cin.ignore(); // Limpiar el buffer antes de getline
             cout << "Ingrese una nueva línea: ";
             getline(cin, nuevoElemento);
             archivo << nuevoElemento << endl << endl;
             cout << "Agregado!!" << endl;
-        } else if (agregar == "0") {
+        } else if (agregar == 0) {
             break;
         } else {
-            cout << "Entrada no válida. Ingrese '1' o '0'." << endl;
+            cout << "Entrada no válida. Ingrese 1 ó 0." << endl;
         }
         cout << endl;
     }

@@ -1,7 +1,13 @@
 all: prog
 
-prog: archivosCPP/loopConUsuario.cpp main.cpp archivosCPP/operarArchivo.cpp archivosCPP/operarVector.cpp archivosCPP/procEntrada.cpp archivosCPP/vectorPermisos.cpp archivosCPP/procesarCuento.cpp
-	g++ -fopenmp archivosCPP/loopConUsuario.cpp main.cpp archivosCPP/operarArchivo.cpp archivosCPP/operarVector.cpp archivosCPP/procEntrada.cpp archivosCPP/vectorPermisos.cpp archivosCPP/procesarCuento.cpp -o prog
+prog: src/loopConUsuario.cpp src/main.cpp src/operarArchivo.cpp \
+	src/operarVector.cpp src/procEntrada.cpp \
+    src/vectorPermisos.cpp src/procesarCuento.cpp
+	g++ -fopenmp src/loopConUsuario.cpp src/main.cpp \
+    src/operarArchivo.cpp src/operarVector.cpp \
+    src/procEntrada.cpp src/vectorPermisos.cpp \
+    src/procesarCuento.cpp -o prog
 
 clean:
 	rm -f prog
+

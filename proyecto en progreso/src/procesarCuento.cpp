@@ -1,12 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <unordered_map>
-#include <vector>
-#include <algorithm>
-#include "metodos.h"
-
-using namespace std;
+#include "../include/metodos.h"
 
 
 string limpiarPalabra(const string &palabra) {

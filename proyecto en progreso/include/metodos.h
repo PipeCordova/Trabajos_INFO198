@@ -1,16 +1,23 @@
 #ifndef METODOS_H
 #define METODOS_H
 
-#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <numeric>
 #include <vector>
+#include <string>
+#include <unistd.h>
+#include <chrono>
+#include <thread>
+#include <unordered_map>
 
 using namespace std;
 
-// Declaracion de metodos a utilizar
 
 // Estas se implementan en procEntrada.cpp
 bool algunParametroVacio(const string &param, const string &nombreParametro);
-void leerConfiguracion(string& rutaPermisos, string& rutaVector, string& rutaPerfiles);
 string obtenerPermisosDesdeArchivo(const string& rutaArchivo, const string& usuario);
 pair <bool, string> usuarioExiste(const string& nombreUsuario, const string& nombreArchivo);
 vector<int> convertirlo(const string& v);

@@ -1,9 +1,5 @@
-#include "metodos.h"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <numeric> 
+#include "../include/metodos.h"
+
 
 // Esta funcion valida que las entradas no sean vacias.
 bool algunParametroVacio(const string &param, const string &nombreParametro) {
@@ -12,28 +8,6 @@ bool algunParametroVacio(const string &param, const string &nombreParametro) {
         return true;
     }
     return false;
-}
-
-// Esto esta bien.
-void leerConfiguracion(string& rutaPermisos, string& rutaMenu, string& rutaPerfiles) {
-    ifstream envFile("PATHS.env");
-    if (envFile.is_open()) {
-        string linea;
-        while (getline(envFile, linea)) {
-            // Parsear la línea para obtener las rutas
-            // (dependiendo del formato que uses en el .env)
-            if (linea.find("DB_PERMISOS=") == 0) {
-                rutaPermisos = linea.substr(12);
-            } else if (linea.find("DB_MENU=") == 0) {
-                rutaMenu = linea.substr(8);
-            } else if (linea.find("DB_PERFILES_USUARIOS=") == 0){
-                rutaPerfiles = linea.substr(21);
-            }
-        }
-        envFile.close();
-    } else {
-        cerr << "No se pudo abrir el archivo de configuración (.env)" << endl;
-    }
 }
 
 // Esto esta bien.
