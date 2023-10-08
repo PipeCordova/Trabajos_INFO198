@@ -1,6 +1,27 @@
 #include "../include/metodos.h"
 
 
+void crearArchivo(const string &rutaCompleta) {
+    ofstream archivo(rutaCompleta);
+    if (!archivo) {
+        cerr << "Error al abrir el archivo" << endl;
+        exit(EXIT_FAILURE);
+    }
+    
+    cout << "Archivo '" << rutaCompleta << "' creado exitosamente!!" << endl << endl;
+}
+
+void agregarLineaArchivo(const string& nombreArchivo, const string& linea) {
+    ofstream archivo(nombreArchivo, ios::app);
+    if (archivo.is_open()) {
+        archivo << linea << endl;
+        archivo.close();
+        cout << "Línea agregada en: " << nombreArchivo << endl << endl;
+    } else {
+        cerr << "No se pudo abrir el archivo: " << nombreArchivo << endl << endl;
+    }
+}
+
 
 /* 
 Esta funcion se encarga de retornar los permisos de usuario correspondiente a admin, userGeneral o userRookie.
@@ -40,4 +61,3 @@ vector<int> obtenerVectorDesdeLinea(int numeroLinea, const string& rutaArchivo) 
     
     return numeros;
 }
-

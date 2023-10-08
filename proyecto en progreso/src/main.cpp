@@ -2,8 +2,9 @@
 
 
 int main(int argc, char *argv[]) {
-    string u, v, f, t, i, o;
+    string u, v;
     int c;
+    Opciones opc;
     while ((c = getopt(argc, argv, "u:v:f:t:i:o:")) != -1) {
         switch (c) {
             case 'u':
@@ -13,22 +14,23 @@ int main(int argc, char *argv[]) {
                 v = optarg;
                 break;
             case 'f':
-                f = optarg;
+                opc.f = optarg;
                 break;
             case 't':
-                t = optarg;
+                opc.t = optarg;
                 break;
             case 'i':
-                i = optarg;
+                opc.i = optarg;
                 break;
             case 'o':
-                o = optarg;
+                opc.o = optarg;
                 break;
         }
     }
 
-    if (algunParametroVacio(u, "-u") || algunParametroVacio(v, "-v") || algunParametroVacio(f, "-f") ||
-        algunParametroVacio(t, "-t") || algunParametroVacio(i, "-i") || algunParametroVacio(o, "-o")) {
+    if (algunParametroVacio(u, "-u") || algunParametroVacio(v, "-v") || algunParametroVacio(opc.f, "-f") ||
+        algunParametroVacio(opc.t, "-t") || algunParametroVacio(opc.i, "-i") || 
+        algunParametroVacio(opc.o, "-o")) {
         exit(EXIT_FAILURE);
     }
 
@@ -39,21 +41,33 @@ int main(int argc, char *argv[]) {
     
     // Aqui se guarda string que corresponde al permiso del usuario, osea: admin, userGeneral, userCookie.
     string perfil = obtenerPermisosDesdeArchivo(rutaPermisos, u);
-    vector<int> vectorEntrada = convertirlo(v); // Convertir a vector el "vector" v de la entrada.
 
+    opc.vectorEntrada = convertirlo(v); // Convertir a vector el "vector" v de la entrada.
 
     cout << "\n- Usuario: " << u << endl;
     cout << "- Perfil:" << perfil << endl << endl;
+
+    vector<vector<int>> perfiles;
+    for (int i = 1; i <= 3; i++) {
+        vector<int> perfil = obtenerVectorDesdeLinea(i, rutaPerfiles);
+        perfiles.push_back(perfil);
+    }
+    // perfiles = {{0,1,2,3,4,5,6,7}, {0,1,2,3,4},{0,1,4}}
+
+    if (perfil == " admin") {
+        opc.vectorPerfil = perfiles[0];
+    }
+    if (perfil == " userGeneral") {
+        opc.vectorPerfil = perfiles[1];
+    }
+    if (perfil == " userRookie") {
+        opc.vectorPerfil = perfiles[2];
+    }
     
-    vector<int> admin = obtenerVectorDesdeLinea(1, rutaPerfiles);
-    vector<int> userGeneral = obtenerVectorDesdeLinea(2, rutaPerfiles);
-    vector<int> userRokie = obtenerVectorDesdeLinea(3, rutaPerfiles);
-
-
     while (true) {
         ifstream archivo(rutaMenu);
-        ifstream archivoTexto(f);
-        ifstream archivoSalida(o);
+        opc.archivoTexto.open(opc.f);
+        opc.archivoSalida.open(opc.o);
 
         cout << "Opciones disponibles:" << endl;
         string linea;
@@ -61,23 +75,15 @@ int main(int argc, char *argv[]) {
             cout << linea << endl;
         }
 
-        int eleccion = obtenerEleccion();
+        opc.eleccion = obtenerEleccion();
 
-        if (eleccion == 0) {
+        if (opc.eleccion == 0) {
             break;
         } 
-        if (eleccion >= 8) {
-            cout << "Opcion " << eleccion << " aun no ha sido implementada!" << endl << endl;
-        } else { // si no es >= 8 entonces si o si esta entre 1 y 7
-            if (perfil == " admin") {
-                ejecutarOpcion(eleccion, admin, vectorEntrada, archivoTexto, f, t, i, o, archivoSalida);
-            }
-            if (perfil == " userGeneral") {
-                ejecutarOpcion(eleccion, userGeneral, vectorEntrada, archivoTexto, f, t, i, o, archivoSalida);
-            }
-            if (perfil == " userRookie") {
-                ejecutarOpcion(eleccion, userRokie, vectorEntrada, archivoTexto, f, t, i, o, archivoSalida);
-            }
+        if (opc.eleccion >= 8) {
+            cout << "Opcion " << opc.eleccion << " aun no ha sido implementada!" << endl << endl;
+        } else {
+            ejecutarOpcion(opc);
         }
 
         cout << "Espere 5 segundos!!\n" << endl;
@@ -85,7 +91,6 @@ int main(int argc, char *argv[]) {
         system("clear");
     }
 
-    // agregarElementosBD(rutaPermisos);
     cout << "Trabajo terminado!!\n" << endl;
     return EXIT_SUCCESS;
 }

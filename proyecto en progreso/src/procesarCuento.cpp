@@ -52,8 +52,8 @@ void ordenarPorFrecuencia(vector<pair<string, int>>& paresPalabraFrecuencia) {
 }
 
 void procesarArchivo(const string & i, const string & o) {
-    string rutaArchivoEntrada = i; // Actualiza con la ruta correcta
-    string rutaArchivoSalida = o; // Actualiza con la ruta correcta
+    string rutaArchivoEntrada = i;
+    string rutaArchivoSalida = o;
     
     ifstream archivoEntrada(rutaArchivoEntrada);
     if (!archivoEntrada.is_open()) {
@@ -97,6 +97,4 @@ void procesarArchivo(const string & i, const string & o) {
     archivoSalida.close();
     
     cout << "Proceso completado. Los resultados se han guardado en el archivo de salida." << endl;
-    
-    return;
 }

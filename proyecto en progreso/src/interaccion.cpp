@@ -1,15 +1,17 @@
 #include "../include/metodos.h"
 
 
-int obtenerEleccion() {
-    int eleccion;
-    cout << "Ingrese su eleccion: ";
-    cin >> eleccion;
-    cout << endl;
-    return eleccion;
-}
+void ejecutarOpcion(const Opciones& opc) {
+    int eleccion = opc.eleccion;
+    const vector<int>& vectorPerfil = opc.vectorPerfil;
+    const vector<int>& vectorEntrada = opc.vectorEntrada;
+    const ifstream& archivoTexto = opc.archivoTexto;
+    const string& f = opc.f;
+    const string& t = opc.t;
+    const string& i = opc.i;
+    const string& o = opc.o;
+    const ifstream& archivoSalida = opc.archivoSalida;
 
-void ejecutarOpcion(int eleccion, const vector<int>& vectorPerfil, const vector<int>& vectorEntrada, ifstream& archivoTexto, const string& f, const string& t, const string & i, const string & o, ifstream& archivoSalida) {
     if (find(vectorPerfil.begin(), vectorPerfil.end(), eleccion) != vectorPerfil.end()) {
         switch (eleccion) {
             case 1:
@@ -23,7 +25,7 @@ void ejecutarOpcion(int eleccion, const vector<int>& vectorPerfil, const vector<
                 cout << "La moda de su vector v es: " << calcularModa(vectorEntrada) << endl << endl;
                 break;
             case 4:
-                cout << "Usted tiene " << vectorEntrada.size() << " elementos en su vector\n" << endl;
+                cout << "Tiene " << vectorEntrada.size() << " elementos en su vector\n" << endl;
                 break;
             case 5:
                 if (archivoTexto.is_open()) {
@@ -53,4 +55,32 @@ void ejecutarOpcion(int eleccion, const vector<int>& vectorPerfil, const vector<
     }
 }
 
+int obtenerEleccion() {
+    int eleccion;
+    cout << "Ingrese su eleccion: ";
+    cin >> eleccion;
+    cout << endl;
+    return eleccion;
+}
 
+int calcularModa(const vector<int>& numeros) {
+    vector<int> numerosOrdenados = numeros;
+    sort(numerosOrdenados.begin(), numerosOrdenados.end());
+    int moda = 0;
+    int maxFrecuencia = 0;
+    int currentFrecuencia = 1;
+
+    for (size_t i = 1; i < numerosOrdenados.size(); i++) {
+        if (numerosOrdenados[i] == numerosOrdenados[i - 1]) {
+            currentFrecuencia++;
+        } else {
+            currentFrecuencia = 1;
+        }
+
+        if (currentFrecuencia > maxFrecuencia) {
+            maxFrecuencia = currentFrecuencia;
+            moda = numerosOrdenados[i];
+        }
+    }
+    return moda;
+}
