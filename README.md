@@ -1,3 +1,3 @@
-# Trabajos_INFO198
+# Trabajos_INFO198_SISTEMAS_OPERATIVOS
 
-Trabajos de la asignatura de Sistemas Operativos INFO198 2023 II.
+Trabajos de la asignatura INFO198 2023 II.
