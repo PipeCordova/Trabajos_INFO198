@@ -4,9 +4,9 @@ Trabajos de la asignatura INFO198 2023 II.
 
 # Cargar variables de entorno
 
-set -o allexport
-source config/.env
-export
+set -o allexport  
+source config/.env  
+export  
 
 
 # Ejecucion
