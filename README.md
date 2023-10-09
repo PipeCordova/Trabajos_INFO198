@@ -56,16 +56,18 @@ A continuación se explica en detalle cada argumento ingresado:
   - `perfilesUsuarios.txt` es el archivo en el cual estan los permisos de usuario, de acuerdo si es admin, userGeneral o userRookie. Estos son los permisos para los cuales puede acceder o no el usuario cuando se muestra el menú desplegable. Es de la forma: `perfil = 0,1,...,9`
 
 
+# Explicación de la carpeta files
+
+Es esta carpeta se encuentran 3 carpetas en su interior.
+
+  - **in**: Es la entrada para la opcion 8, osea para preparar los indices invertidos.
+  - **out**: Salida de los archivos una vez ejecutada la opción 8. Notar la salida de estos archivos es de la forma: `palabra1, cantidad` y cada archivo tiene el mismo nombre al archivo de entrada.
+  - **index**: Es la carpeta donde se guarda el archivo de salida una vez ejecutada la opción 9, osea crear indice invertido, es de la forma: `palabra1:(archivo-salida1,cantidad);(archivo-salida2,cantidad);...`
+
+Para poder ejecutar la opción 8 y ver los resultados en la carpeta **out**, debe tener la carpeta vacía, ya que de lo contrario el programa asumirá que anteriormente ya había ejecutado esa opción.  
 
 
+# Explicación carpeta progs_externos
 
-
-
-
-
-
-
-
-
-
-
+En esta carpeta se crearon los procesos externos, para los cuales se ejecutan las opciones 8 y 9, osea preparar indice invertido y crear indice invertido. Estos programas se llamar desde el programa principal, pero se ejecutar externamente.   
+ 
