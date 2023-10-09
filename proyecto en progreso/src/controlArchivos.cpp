@@ -61,26 +61,3 @@ vector<int> obtenerVectorDesdeLinea(int numeroLinea, const string& rutaArchivo) 
     
     return numeros;
 }
-
-
-/*
-
-// aqui solo se leeran los archivos en la carpeta files/in que sean txt
-void listaArchivos(const string& dir, vector<string>& archivos, const string& ext){
-    string elem;
-    DIR *directorio; //Tipo de Dato
-    struct dirent * elemento;
-    if (directorio = opendir(dir.c_str())) {
-        while(elemento = readdir(directorio)) {
-            elem = elemento -> d_name;
-            if (elem.length() >= 4 && elem.substr(elem.length() - 4) == "." + ext){
-                archivos.push_back(elem);
-            }
-        }
-    } else {
-        cout << "Error al abrir directorio " << dir << "\nEscribió mal la dirección o no existe!" << endl;
-    }
-    closedir(directorio);
-}
-
-*/
