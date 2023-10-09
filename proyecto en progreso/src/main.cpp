@@ -116,8 +116,9 @@ int main(int argc, char *argv[]) {
         cout << "Espere 5 segundos!!\n" << endl;
         this_thread::sleep_for(chrono::seconds(5)); // Esperar 5 segundos y se limpia la consola
         system("clear");
-    }
+    }  
 
-    cout << "Trabajo terminado!!\n" << endl;
+    cout << "Si va a ejecutar de nuevo el programa, verifique que la carpeta en la ruta " << opc.rutaOut << " este vacía!!" << endl;
+    cout << "\nTrabajo terminado!!\n" << endl;
     return EXIT_SUCCESS;
 }
