@@ -18,23 +18,24 @@ La aplicación se basa en leer una entrada de 6 inputs ingresada por el usuario,
 
   - **controlEntrada.cpp**: Aquí se crean funciones para la verificación de la entrada, verificar si el usuario existe en la base de datos y para convertir a vector el string vector de la entrada. 
 
+
 # Cargar variables de entorno antes de compilar
 
-Escriba en la consola en la carpeta 'proyecto en progreso' los siguientes comandos:  
-  `set -o allexport`      
-  'source config/.env'  
-  'export'    
+Escriba en la consola en la carpeta **proyecto en progreso** los siguientes comandos:  
+  `set -o allexport`        
+  `source config/.env`      
+  `export`      
 
-Gracias a estos comandos se cargaran las variables de entorno, definidas en config/.env
+Gracias a estos comandos se cargaran las variables de entorno, definidas en config/.env. Estas variables de entorno tienen la ruta exactas donde se encuentran las bases de datos, y lo necesario para ejecutar la opcioón 8  y 9, es decir, el tipo de extensión, el numero de threads, carpeta de entrada y salida, y la ruta con el archivo de indices invertidos.  
 
 # Comando para compilar
 
-Escriba en consola el comando 'make'  
+Escriba en consola el comando `make`    
 Gracias al Makefile proporcionado, la compilación se simplifica.  
 
 # Ejecucion
 
-La ejecución es de la forma: './prog -u userName -v a,b,c,...z -f "path/nombre" - t "texto" -i "path/textoEntrada" -o "path/textoSalida"'
+La ejecución es de la forma: `./prog -u `userName` -v `a,b,c,...z` -f `"path/nombre"` - t `"texto"` -i `"path/textoEntrada"` -o `"path/textoSalida"``  
 
 A continuación se explica en detalle cada argumento ingresado:
   - 
