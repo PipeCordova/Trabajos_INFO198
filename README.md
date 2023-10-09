@@ -33,14 +33,29 @@ Gracias a estos comandos se cargaran las variables de entorno, definidas en conf
 Escriba en consola el comando `make`    
 Gracias al Makefile proporcionado, la compilación se simplifica.  
 
-# Ejecucion
+# Comando para ejecutar
 
-La ejecución es de la forma: `./prog -u `userName` -v `a,b,c,...z` -f `"path/nombre"` - t `"texto"` -i `"path/textoEntrada"` -o `"path/textoSalida"``  
+La ejecución es de la forma: ./prog -u `userName` -v `a,b,c,...z` -f `"path/nombre"` - t `"texto"` -i `"path/textoEntrada"` -o `"path/textoSalida"`  
 
-A continuación se explica en detalle cada argumento ingresado:
-  - 
+A continuación se explica en detalle cada argumento ingresado:  
+  - `userName` es su nombre de usuario. Se validará si este nombre existe en la base de datos data/DB.txt.
+  - `a,b,c,...,z` es el vector de entrada. Ingrese números enteros separados por comas.
+  - `path/nombre` path es la ubicación donde deseas que se guarde un archivo y el nombre del archivo que deseas crear. Notar que se ingresa entre comillas!
+  - `texto`es el texto que quiere agregar al archivo creado cuando se selecciona la opción correspondiente.
+  - `path/textoEntrada` es la ubicacion exacta donde se encuentra el cuento para que se gatille la opción de contar las palabras.
+  - `path/textoSalida` es el archivo que se crea con el resultado una vez ejecutada la opción de contar palabras, es de la forma: palabra1, cantidad
 
-./prog -u Clarita -v 3,1,4,5,2,2,3 -f "ft/hola.py" -t "print(':D')" -i "io/cuento.txt" -o "io/salida.txt"
+ Un ejemplo simple de ejecución sería: ./prog -u Clarita -v 3,1,4,5,2,2,3 -f "ft/hola.py" -t "print(':D')" -i "io/cuento.txt" -o "io/salida.txt"
+
+
+ # Explicación Base de Datos
+
+ Se encuentran en la carpeta data, hay 3 archivos txt. A continuación una explicación breve.  
+  - `BD.txt`es el archivo donde estan los usuarios registrados en el sistema y su perfil. Es de la forma: `userName perfil`, perfil puede ser: admin, userGeneral o userRookie.
+  - `menu.txt`es el archivo con el menú desplegable que se muestra cuando se ejecuta el código.
+  - `perfilesUsuarios.txt` es el archivo en el cual estan los permisos de usuario, de acuerdo si es admin, userGeneral o userRookie. Estos son los permisos para los cuales puede acceder o no el usuario cuando se muestra el menú desplegable. Es de la forma: `perfil = 0,1,...,9`
+
+
 
 
 
