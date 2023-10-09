@@ -9,7 +9,6 @@
 namespace fs = std::filesystem;
 using namespace std;
 
-
 int main(int argc, char *argv[]){
     if (argc != 3) {
         cout << "Uso: " << argv[0] << " <INVERTED_INDEX_FILE> <PATH_FILES_OUT>" << endl;
@@ -20,7 +19,7 @@ int main(int argc, char *argv[]){
     string carpeta_entrada = argv[2]; // la carpeta de entrada seria la carpera de salida en la opcion 8
 
     // Crear un mapa para almacenar las palabras, archivos y conteos
-    unordered_map<string, vector<pair<string, int>>> conteo_palabras;
+    unordered_map<string, unordered_map<string, int>> conteo_palabras;
 
     // Recorrer todos los archivos en la carpeta de entrada
     for (const auto& entrada : fs::directory_iterator(carpeta_entrada)) {
@@ -31,9 +30,6 @@ int main(int argc, char *argv[]){
 
             // Leer el archivo palabra por palabra y contar las apariciones
             while (archivo >> palabra) {
-                // Eliminar signos de puntuación u otros caracteres no deseados
-                // (puedes personalizar esta parte según tus necesidades)
-                // Aquí se asume que solo se separan palabras por espacios.
                 for (char& c : palabra) {
                     if (!isalpha(c)) {
                         c = ' ';
@@ -42,7 +38,7 @@ int main(int argc, char *argv[]){
 
                 // Incrementar el contador de la palabra en el mapa
                 if (!palabra.empty()) {
-                    conteo_palabras[palabra].emplace_back(nombre_archivo, 1);
+                    conteo_palabras[palabra][nombre_archivo]++;
                 }
             }
         }
@@ -58,7 +54,7 @@ int main(int argc, char *argv[]){
         salida << "\n";
     }
 
-    cout << "El proceso PID = " << getpid() << " generó el archivo " << archivo_salida << endl;
+    cout << "El proceso PID = " << getpid() << " generó el archivo: " << archivo_salida << endl;
 
     return 0;
 }
