@@ -20,8 +20,8 @@ La aplicación se basa en leer una entrada de 6 inputs ingresada por el usuario,
 
 # Cargar variables de entorno antes de compilar
 
-Escriba en la consola en la carpeta 'proyecto en progreso' los siguientes comandos:
-  'set -o allexport'  
+Escriba en la consola en la carpeta 'proyecto en progreso' los siguientes comandos:  
+  ´set -o allexport´    
   'source config/.env'  
   'export'    
 
