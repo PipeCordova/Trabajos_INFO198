@@ -4,7 +4,7 @@ Trabajos de la asignatura INFO198 2023 II.
 
 # Descripción
 
-La aplicación se basa en leer una entrada de 6 inputs ingresada por el usuario, los cuales son los datos que el programa procesa para luego darle una respuesta al usuario de acuerdo a sus necesiades y las opciones disponibles que él dispone, ya que se verifica en la base de datos data/BD.txt que tipo de usuario es, ya sea admin, userGeneral o userRookie.
+La aplicación se basa en leer una entrada de 6 inputs ingresados por el usuario, los cuales son los datos que el programa procesa para luego darle una respuesta al usuario de acuerdo a sus necesiades y las opciones disponibles que él dispone, ya que se verifica en la base de datos data/BD.txt que tipo de usuario es, ya sea admin, userGeneral o userRookie.
 
 # Explicacion de cada programa de la carpeta src
 
@@ -14,7 +14,7 @@ La aplicación se basa en leer una entrada de 6 inputs ingresada por el usuario,
 
   - **controlArchivos.cpp**: Aquí se manejan las opciones de creación de archivos o agregación de linea en el archivo, lo cual corresponde a la opción 5 y 6. Tambien se creó una función para obtener los permisos desde data/perfilesUsuario.txt, de acuerdo al usuario ingresado.
 
-  - **procesarCuento.cpp**: Se crean funciones para el procesamiento del cuento que esta en la carpeta io, esto es para que funcione la opción 7 del menú. Basicamente se cuentan las palabras, se eliminan simbolos extraños y se ordena de acuerdo a la ocurrencia.
+  - **procesarCuento.cpp**: Se crean funciones para el procesamiento del cuento que esta en la carpeta **io**, esto es para que funcione la opción 7 del menú. Basicamente se cuentan las palabras, se eliminan simbolos extraños y se ordena de acuerdo a la ocurrencia.
 
   - **controlEntrada.cpp**: Aquí se crean funciones para la verificación de la entrada, verificar si el usuario existe en la base de datos y para convertir a vector el string vector de la entrada. 
 
