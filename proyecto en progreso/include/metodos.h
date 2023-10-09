@@ -11,9 +11,14 @@
 #include <unistd.h>
 #include <chrono>
 #include <thread>
+#include <mutex>
 #include <unordered_map>
+#include <dirent.h>         //directorios
+#include <filesystem> // es para comprobar si la carpeta out esta vacia o no
+
 
 using namespace std;
+namespace fs = filesystem;
 
 struct Opciones {
     int eleccion;
@@ -25,6 +30,9 @@ struct Opciones {
     string i;
     string o;
     ifstream archivoSalida;
+    string rutaOut; // se agrego en la estructura para asi poder verificar si la carpeta out esta vacia o no
+    string comandoPrepararDatos;
+    string comandoCrearIndice;
 };
 
 
@@ -42,5 +50,6 @@ void procesarArchivo(const string & i, const string & o);
 void ordenarPorFrecuencia(vector<pair<string, int>>& paresPalabraFrecuencia);
 vector<string> dividirTexto(const string& texto);
 string limpiarPalabra(const string &palabra);
+
 
 #endif 
