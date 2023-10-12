@@ -1,3 +1,5 @@
+/*
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -54,5 +56,85 @@ int main(int argc, char *argv[]) {
 
     cout << "El proceso PID = " << getpid() << " generó el archivo: " << archivo_salida << endl;
 
+    return 0;
+}
+
+*/
+
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <filesystem>
+#include <unistd.h> // pid
+
+namespace fs = std::filesystem;
+using namespace std;
+
+/*
+Se define una estructura, la cual seria la palabra, y archivos es un vector de pares el cual 
+almacena el nombre del archivo y la cantidad de veces que aparece la palabra en ese archivo.
+*/
+
+struct ConteoPalabra {
+    string palabra;
+    vector<pair<string, int>> archivos; 
+};
+
+
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        cout << "Uso: " << argv[0] << " <ARCHIVO_SALIDA> <CARPETA_ENTRADA>" << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    string archivoSalida = argv[1];
+    string carpetaEntrada = argv[2];
+
+    vector<ConteoPalabra> conteoPalabras;
+
+    for (const auto& entrada : fs::directory_iterator(carpetaEntrada)) {
+        if (entrada.is_regular_file()) {
+            ifstream archivo(entrada.path());
+            string nombreArchivo = entrada.path().filename();
+            string palabra;
+            int cantidad;
+
+            while (getline(archivo, palabra, ';')) {
+                archivo >> cantidad;
+                archivo.ignore(numeric_limits<streamsize>::max(), '\n');
+
+                bool encontrada = false;
+                // Buscar si la palabra ya existe en el vector de conteo
+                for (auto& conteo : conteoPalabras) {
+                    if (conteo.palabra == palabra) {
+                        conteo.archivos.push_back({nombreArchivo, cantidad});
+                        encontrada = true;
+                        break;
+                    }
+                }
+                // Si la palabra no se encontró, agregarla al vector
+                if (!encontrada) {
+                    ConteoPalabra nuevaConteo;
+                    nuevaConteo.palabra = palabra;
+                    nuevaConteo.archivos.push_back({nombreArchivo, cantidad});
+                    conteoPalabras.push_back(nuevaConteo);
+                }
+            }
+        }
+    }
+
+    ofstream salida(archivoSalida);
+    for (const ConteoPalabra& conteo : conteoPalabras) {
+        salida << conteo.palabra << ":";
+        for (const auto& archivoConteo : conteo.archivos) {
+            salida << "(" << archivoConteo.first << ";" << archivoConteo.second << ");";
+        }
+        salida << "\n";
+    }
+    
+    cout << "El proceso PID = " << getpid() << " generó el archivo: " << archivoSalida << endl;
     return 0;
 }
