@@ -15,6 +15,7 @@
 #include <unordered_map>
 #include <dirent.h>         //directorios
 #include <filesystem> // es para comprobar si la carpeta out esta vacia o no
+#include <utility>
 
 
 using namespace std;
@@ -31,8 +32,10 @@ struct Opciones {
     string o;
     ifstream archivoSalida;
     string rutaOut; // se agrego en la estructura para asi poder verificar si la carpeta out esta vacia o no
+    string rutaIndex;
     string comandoPrepararDatos;
     string comandoCrearIndice;
+    string comandoBuscador;
 };
 
 
@@ -51,5 +54,10 @@ void ordenarPorFrecuencia(vector<pair<string, int>>& paresPalabraFrecuencia);
 vector<string> dividirTexto(const string& texto);
 string limpiarPalabra(const string &palabra);
 
+bool hayAlMenos20Archivos(const string& rutaIn, const string& extension);
+pair<bool, vector<string>> archivosCumplen1MB(const string& rutaIn, const string& extension);
+
+void realizarAccion8(const string& rutaOut, const string& comando);
+void realizarAccion9_10(const string& rutaOut, const string& comando);
 
 #endif 

@@ -42,28 +42,60 @@ int main(int argc, char *argv[]) {
     string ext = getenv("EXTENTION");
     string rutaIn = getenv("PATH_FILES_IN");
     opc.rutaOut = getenv("PATH_FILES_OUT");
+
     string nThreads = getenv("AMOUNT_THREADS");
-    string rutaIndexFile = getenv("INVERTED_INDEX_FILE");
-    
     int nHilos = stoi(nThreads); // aqui se paso a int el string con el numero de threads
+
+    opc.rutaIndex = getenv("INVERTED_INDEX_FILE");
+
+
+    string TopK = getenv("TOPK");
+    int topK = stoi(TopK);
     
-    if (nHilos <= 0 || nHilos > 10 || rutaIn == opc.rutaOut) {
-        cout << "\nError: ";
+    bool veinteArchivos = !hayAlMenos20Archivos(rutaIn, ext);
+
+    auto resultado = archivosCumplen1MB(rutaIn, ext);
+    bool todosCumplen = !resultado.first;
+    vector<string> archivosNoCumplen = resultado.second;
+
+    bool errorDetectado = false;
+
+    if (nHilos <= 0 || nHilos > 10 || rutaIn == opc.rutaOut || veinteArchivos || todosCumplen || topK <= 4) {
+        cerr << "\nError: ";
         if (nHilos <= 0) {
-            cout << "nThreads debe ser mayor o igual a 1!";
+            cerr << "nThreads debe ser mayor o igual a 1!";
         } else if (nHilos > 10) {
-            cout << "nThreads no debe ser mayor a 10!";
+            cerr << "nThreads no debe ser mayor a 10!";
+        } else if ( rutaIn == opc.rutaOut){
+            cerr << "PATH_FILES_IN y PATH_FILES_OUT no pueden ser iguales!";
+        } else if (veinteArchivos) {
+            cerr << "No hay al menos 20 archivos " << ext << " en la carpeta " << rutaIn << " !";
+            errorDetectado = true;
+        } else if (todosCumplen) {
+            cout << "Para este programa 1 MB = 1.048.576 bytes es decir (1024 * 1024 bytes)";
+            cout << "\nArchivos que no cumplen en la carpeta {" << rutaIn << "} son: ";
+            for (const string& nombreArchivo : archivosNoCumplen) {
+                cout << nombreArchivo << " ";
+            }
+            cout << endl;
+            errorDetectado = true;
         } else {
-            cout << "PATH_FILES_IN y PATH_FILES_OUT no pueden ser iguales!\n";
-            cout << "Debe modificar variable de entorno!";
+            cerr << "Debe tener minimo 5 TOPK!!";
         }
-        cout << endl;
+        cerr << "\n";
+        if (!errorDetectado) {
+            cerr << "Debe modificar la variable de entorno .env!!" << endl;
+        }
         exit(EXIT_FAILURE);
     } 
     
-    opc.comandoPrepararDatos = "./progs_externos/executable/app " + ext + " " + rutaIn + " " + opc.rutaOut + " " + nThreads;
-    opc.comandoCrearIndice = "./progs_externos/executable/prog " + rutaIndexFile + " " + opc.rutaOut;
+    string rutaPrepararDatos = getenv("RUTA_PREPARAR_DATOS");
+    string rutaCrearIndice = getenv("RUTA_CREAR_INDICE");
+    string rutaBuscador = getenv("RUTA_BUSCADOR");
 
+    opc.comandoPrepararDatos = rutaPrepararDatos + " " + ext + " " + rutaIn + " " + opc.rutaOut + " " + nThreads;
+    opc.comandoCrearIndice = rutaCrearIndice + " " + opc.rutaIndex + " " + opc.rutaOut;
+    opc.comandoBuscador = rutaBuscador + " " + opc.rutaIndex + " " + TopK;
 
     
     // Aqui se guarda string que corresponde al permiso del usuario, osea: admin, userGeneral, userCookie.
@@ -79,7 +111,7 @@ int main(int argc, char *argv[]) {
         vector<int> perfil = obtenerVectorDesdeLinea(i, rutaPerfiles);
         perfiles.push_back(perfil);
     }
-    // perfiles = {{0,1,2,3,4,5,6,7,8,9}, {0,1,2,3,4},{0,1,4}}
+    // perfiles = {{0,1,2,3,4,5,6,7,8,9,10}, {0,1,2,3,4},{0,1,4}}
 
     if (perfil == " admin") {
         opc.vectorPerfil = perfiles[0];
@@ -96,10 +128,11 @@ int main(int argc, char *argv[]) {
         opc.archivoTexto.open(opc.f);
         opc.archivoSalida.open(opc.o);
 
+
         cout << "Opciones disponibles:" << endl;
         string linea;
         while (getline(archivo, linea)) {
-            cout << linea << endl;
+            cout << "\t" << linea << endl;
         }
 
         opc.eleccion = obtenerEleccion();
@@ -107,18 +140,21 @@ int main(int argc, char *argv[]) {
         if (opc.eleccion == 0) {
             break;
         } 
-        if (opc.eleccion >= 10) {
-            cout << "Opcion " << opc.eleccion << " aun no ha sido implementada!" << endl << endl;
+        if (opc.eleccion >= 11) {
+            cerr << "Opcion " << opc.eleccion << " aun no ha sido implementada!" << endl << endl;
         } else {
             ejecutarOpcion(opc);
         }
 
-        cout << "Espere 5 segundos!!\n" << endl;
-        this_thread::sleep_for(chrono::seconds(5)); // Esperar 5 segundos y se limpia la consola
+        cout << "Espere 7 segundos!!\n" << endl;
+        this_thread::sleep_for(chrono::seconds(7)); // Esperar 5 segundos y se limpia la consola
         system("clear");
     }  
 
-    cout << "Si va a ejecutar de nuevo el programa, verifique que la carpeta en la ruta " << opc.rutaOut << " este vacía!!" << endl;
+    cout << "Si va a ejecutar de nuevo el programa, verifique lo siguiente:" << endl;
+    cout << "\t1) El archivo {" << opc.o << "} NO debe existir." << endl;
+    cout << "\t2) El archivo {" << opc.rutaIndex << "} NO debe existir." << endl;
+    cout << "\t3) Carpeta en la ruta {" << opc.rutaOut << "} esté completamente vacía." << endl;
     cout << "\nTrabajo terminado!!\n" << endl;
     return EXIT_SUCCESS;
 }

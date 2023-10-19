@@ -10,13 +10,12 @@ bool algunParametroVacio(const string &param, const string &nombreParametro) {
     return false;
 }
 
-// Esto esta bien.
 /*
 Esta funcion retorna el permiso del usuario, la cual viene desde la funcion usuarioExiste(..).
 Si usuarioExiste retorna falso significa que el usuario no existe, entonces se termina el programa.
 */
 string obtenerPermisosDesdeArchivo(const string& rutaArchivo, const string& usuario) {
-    pair<bool, string> valores = usuarioExiste(usuario, rutaArchivo);
+    auto valores = usuarioExiste(usuario, rutaArchivo);
     bool flag = valores.first;
     string permiso = valores.second;
     if (!flag) {
@@ -47,8 +46,52 @@ pair <bool, string> usuarioExiste(const string& nombreUsuario, const string& nom
     return make_pair(false, "Usuario NO encontrado en la Base de Datos!!");
 }
 
+/* Esta funcion se encarga de validar si hay al menos 20 archivos con la extension definida como 
+variable de entorno EXTENTION. 
+*/
+bool hayAlMenos20Archivos(const string& rutaIn, const string& extension) {
+    int contador = 0;
+    for (const auto& entrada : fs::directory_iterator(rutaIn)) {
+        if (fs::is_regular_file(entrada) && entrada.path().extension() == "." + extension) {
+            contador++;
+            if (contador >= 20) {
+                return true;
+            }
+        }
+    }
+    cout << contador << endl;
+    return false;
+}
 
-// Listo. Esta funcion convierte a vector el "vector" v ingresado como string en el parametro de entrada.
+/* Esta funcion se encarga de validar que los archivos en la carpeta PATH_FILES_IN sean de al menos 1 MB,
+por eso devuelve un booleano. Ademas se agregó para que devuelva un vector con los nombres de los archivos 
+que no son de 1 MB, para que el usuario pueda ver en pantalla cuales archivos no son de 1 MB. Es por esta 
+razon que la funcion es de tipo pair. 
+*/
+
+pair<bool, vector<string>> archivosCumplen1MB(const string& rutaIn, const string& extension) {
+    bool todosCumplen = true;
+    vector<string> archivosNoCumplen;
+
+    for (const auto& archivo : fs::directory_iterator(rutaIn)) {
+        if (archivo.is_regular_file() && archivo.path().extension() == "." + extension) {
+            ifstream file(archivo.path(), ios::binary);
+            if (file) {
+                file.seekg(0, ios::end);
+                streampos fileSize = file.tellg();
+                // 1 MB equivale a 1.048.576 bytes (1024 * 1024 bytes)
+                if (fileSize < 1024 * 1024) {
+                    todosCumplen = false;
+                    archivosNoCumplen.push_back(archivo.path().filename().string());
+                }
+                file.close();
+            }
+        }
+    }
+    return make_pair(todosCumplen, archivosNoCumplen);
+}
+
+// Esta funcion convierte a vector el "vector" v ingresado como string en el parametro de entrada.
 vector<int> convertirlo(const string& v) {
     vector<int> vec;
     string token = "";

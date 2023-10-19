@@ -1,5 +1,3 @@
-/*
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -59,8 +57,9 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-*/
 
+
+/*
 
 #include <iostream>
 #include <fstream>
@@ -72,10 +71,7 @@ int main(int argc, char *argv[]) {
 namespace fs = std::filesystem;
 using namespace std;
 
-/*
-Se define una estructura, la cual seria la palabra, y archivos es un vector de pares el cual 
-almacena el nombre del archivo y la cantidad de veces que aparece la palabra en ese archivo.
-*/
+
 
 struct ConteoPalabra {
     string palabra;
@@ -138,3 +134,5 @@ int main(int argc, char *argv[]) {
     cout << "El proceso PID = " << getpid() << " generó el archivo: " << archivoSalida << endl;
     return 0;
 }
+
+*/

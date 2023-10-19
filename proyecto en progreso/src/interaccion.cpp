@@ -12,8 +12,11 @@ void ejecutarOpcion(const Opciones& opc) {
     const string& o = opc.o;
     const ifstream& archivoSalida = opc.archivoSalida;
     const string rutaOut = opc.rutaOut;
+    const string rutaIndex = opc.rutaIndex;
     const string comandoPrepararDatos = opc.comandoPrepararDatos;
     const string comandoCrearIndice = opc.comandoCrearIndice;
+    const string comandoBuscador = opc.comandoBuscador;
+
 
     if (find(vectorPerfil.begin(), vectorPerfil.end(), eleccion) != vectorPerfil.end()) {
         switch (eleccion) {
@@ -41,7 +44,7 @@ void ejecutarOpcion(const Opciones& opc) {
                 if (!archivoTexto.is_open()) {
                     cout << "El archivo NO existe!!\n" << endl;
                 } else {
-                    agregarLineaArchivo(f, t);
+                    agregarLineaArchivo(f, t); // aqui se agrega texto al archivo de la carpeta ft
                 }
                 break;
             case 7:
@@ -52,35 +55,51 @@ void ejecutarOpcion(const Opciones& opc) {
                 }
                 break;
             case 8:
-                if (fs::is_directory(rutaOut)) {
-                    fs::directory_iterator it(rutaOut);
-                    if (it == fs::directory_iterator()) {
-                        system(comandoPrepararDatos.c_str());
-                    } else {
-                        cout << "No puede sobreescribir en la carpeta!!." << endl;
-                    }
-                } else {
-                    cout << "La ruta no es una carpeta válida. Revise su archivo .env!!" << endl;
-                }
+                realizarAccion8(rutaOut, comandoPrepararDatos);
                 break;
             case 9:
-                if (fs::is_directory(rutaOut)) {
-                    fs::directory_iterator it(rutaOut);
-                    if ((it == fs::directory_iterator())) {
-                        // Si la carpeta esta vacia, es porque no ha seleccionado la opcion 8 previamente
-                        cout << "Debe ejecutar la opcion 8 primero!!" << endl;
-                    } else {
-                        system(comandoCrearIndice.c_str());
-                    }
+                if (archivoSalida.is_open()){
+                    cerr << "El archivo ya existe!!" << endl;
                 } else {
-                    cout << "La ruta no es una carpeta válida. Revise su archivo .env!!" << endl;
+                    realizarAccion9_10(rutaOut, comandoCrearIndice);
                 }
+                break;
+            case 10:
+                realizarAccion9_10(rutaOut, comandoBuscador);
                 break;
         }
     } else {
         cout << "No tiene permiso para escoger la opcion " << eleccion << endl << endl;
     }
 }
+
+
+void realizarAccion8(const string& rutaOut, const string& comando) {
+    if (fs::is_directory(rutaOut)) {
+        fs::directory_iterator it(rutaOut);
+        if (it == fs::directory_iterator()) {
+            system(comando.c_str());
+        } else {
+            cout << "No puede sobreescribir en los archivos de la carpeta!!." << endl;
+        }
+    } else {
+        cout << "La ruta no es una carpeta válida. Revise su archivo .env!!" << endl;
+    }
+}
+
+void realizarAccion9_10(const string& rutaOut, const string& comando) {
+    if (fs::is_directory(rutaOut)) {
+        fs::directory_iterator it(rutaOut);
+        if (it == fs::directory_iterator()) {
+            cout << "Debe ejecutar la opción 8 primero!!" << endl;
+        } else {
+            system(comando.c_str());
+        }
+    } else {
+        cout << "La ruta no es una carpeta válida. Revise su archivo .env!!" << endl;
+    }
+}
+
 
 int obtenerEleccion() {
     int eleccion;

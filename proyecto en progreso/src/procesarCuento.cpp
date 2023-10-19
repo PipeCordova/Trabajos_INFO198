@@ -96,5 +96,5 @@ void procesarArchivo(const string & i, const string & o) {
     
     archivoSalida.close();
     
-    cout << "Proceso completado. Los resultados se han guardado en el archivo de salida." << endl;
+    cout << "Proceso completado. Los resultados se han guardado en " << rutaArchivoSalida  << " ." << endl;
 }
