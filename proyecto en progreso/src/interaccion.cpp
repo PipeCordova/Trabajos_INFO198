@@ -1,6 +1,13 @@
 #include "../include/metodos.h"
 
 
+/*
+Notemos que en la carpeta include hay un archivo .h con la definición de las funciones y con una estructura
+Opciones, la cual tiene los mismos objetos que se definen en esta función. Esta función recibe la clase Opciones
+que se rescatan desde el main, entonces aqui se están copiando los miembros de la estructura opc en variables
+locales con nombres más cortos para facilitar su uso en el código. Se ejecuta cada opción seleccionada de acuerdo
+al perfil del usuario. Por ejemplo Admin, tiene todos los permisos.
+*/
 void ejecutarOpcion(const Opciones& opc) {
     int eleccion = opc.eleccion;
     const vector<int>& vectorPerfil = opc.vectorPerfil;
@@ -73,6 +80,13 @@ void ejecutarOpcion(const Opciones& opc) {
     }
 }
 
+/*
+Esta función se crea para validar que la opción 8 se ejecute solo una vez durante la ejecución del código, ya 
+que si se selecciona más veces, se estaría escribiendo lo mismo en un archivo que ya esta creado, entonces para
+evitar sobreescribir en los archivos de esa carpeta, se valida con el if si la carpeta esta vacía o no. Si es
+primera vez que se selecciona la opción 8, significa que la carpeta esta vacia, entonces se llama al proceso 
+externo. Si la carpeta no esta vacía significa que ya se ejecutó la opcion 8.
+*/
 
 void realizarAccion8(const string& rutaOut, const string& comando) {
     if (fs::is_directory(rutaOut)) {
@@ -87,6 +101,11 @@ void realizarAccion8(const string& rutaOut, const string& comando) {
     }
 }
 
+/*
+Esta función se creo para evitar repetir codigo en el case 9 y 10 del switch, ya que ambos casos se necesita
+que la opción 8 se haya seleccionado previamente. Si la opción 8 ya fue seleccionada, entonces se llama al 
+proceso externo con el comando correspondiente.
+*/
 void realizarAccion9_10(const string& rutaOut, const string& comando) {
     if (fs::is_directory(rutaOut)) {
         fs::directory_iterator it(rutaOut);
@@ -100,7 +119,9 @@ void realizarAccion9_10(const string& rutaOut, const string& comando) {
     }
 }
 
-
+/*
+Función creada para preguntarle al usuario que elección del menú desea y retornarla al while true del main.
+*/
 int obtenerEleccion() {
     int eleccion;
     cout << "Ingrese su eleccion: ";
@@ -109,6 +130,9 @@ int obtenerEleccion() {
     return eleccion;
 }
 
+/*
+Función que calcula la moda del vector, osea la opción 3.
+*/
 int calcularModa(const vector<int>& numeros) {
     vector<int> numerosOrdenados = numeros;
     sort(numerosOrdenados.begin(), numerosOrdenados.end());
