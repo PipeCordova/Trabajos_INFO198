@@ -1,6 +1,14 @@
 #include "../include/metodos.h"
 
 
+/*
+Esta función se encarga de eliminar caracteres especiales en el archivo de entrada io/cuento.txt.
+
+Por ejemplo:
+    La palabra "hola" el for se encarga de leer letra por letra, osea, 'h' 'o' 'l' 'a' y el isalpha()
+    devuelve True si es una palabra del alfabeto ingles desde (a-z) o (A-Z). El tolowe() convierte la palabra
+    a minuscula.
+*/
 string limpiarPalabra(const string &palabra) {
     string limpia = "";
     for (char c : palabra) {
@@ -12,7 +20,9 @@ string limpiarPalabra(const string &palabra) {
 }
 
 
-// Función para convertir el texto en una lista de palabras
+/*
+Función para convertir el texto en un vector de palabras
+*/
 vector<string> dividirTexto(const string& texto) {
     vector<string> palabras;
     istringstream iss(texto);
@@ -27,7 +37,9 @@ vector<string> dividirTexto(const string& texto) {
     return palabras;
 }
 
-// Función de bucket sort para ordenar las palabras por frecuencia
+/*
+Función de bucket sort para ordenar las palabras por frecuencia.
+*/
 void ordenarPorFrecuencia(vector<pair<string, int>>& paresPalabraFrecuencia) {
     const int numBuckets = 10; // Puedes ajustar el número de buckets según tu preferencia
     
@@ -50,6 +62,7 @@ void ordenarPorFrecuencia(vector<pair<string, int>>& paresPalabraFrecuencia) {
         }
     }
 }
+
 
 void procesarArchivo(const string & i, const string & o) {
     string rutaArchivoEntrada = i;

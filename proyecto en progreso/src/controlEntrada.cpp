@@ -1,7 +1,9 @@
 #include "../include/metodos.h"
 
 
-// Esta funcion valida que las entradas no sean vacias.
+/*
+Esta funcion valida que las entradas u,v,f,t,i,o no sean vacias.
+*/
 bool algunParametroVacio(const string &param, const string &nombreParametro) {
     if (param.empty()) {
         cerr << "El parámetro " << nombreParametro << " es OBLIGATORIO\n";
@@ -11,31 +13,52 @@ bool algunParametroVacio(const string &param, const string &nombreParametro) {
 }
 
 /*
-Esta funcion retorna el permiso del usuario, la cual viene desde la funcion usuarioExiste(..).
-Si usuarioExiste retorna falso significa que el usuario no existe, entonces se termina el programa.
+En esta funcion se realiza una llamada a una funcion pair usuarioExiste(), osea devuelve 2 valores. 
+El primer valor que devuelve es un booleano que nos dice si el usuario u existe en la base de datos data/BD.txt.
+El segundo valor es un string el cual se retorna. Este string es el permiso el cual tiene el usuario para usar
+en el programa. Por ejemplo Clarita es Admin o LuisVeas es userGeneral.
+
+Ejemplo caso true:
+    valores = {True, Admin}
+    flag = True
+    permiso = Admin
+
+    retornaría que es Admin ya que se saltaría el if
+
+Ejemplo caso False:
+    valores = {False, Usuario NO encontrado en la Base de Datos!!}
+    flag = False
+    permiso = Usuario NO encontrado en la Base de Datos!!
+    
+    El if se cumpliría ya que se está negando un False, osea es True. Por lo tanto imprimiría el mensaje
+    que no se encontró en la base de datos y se saldría de la ejecucion del programa.
 */
 string obtenerPermisosDesdeArchivo(const string& rutaArchivo, const string& usuario) {
     auto valores = usuarioExiste(usuario, rutaArchivo);
     bool flag = valores.first;
     string permiso = valores.second;
     if (!flag) {
-        cout << endl << permiso << endl << endl;
+        cout << endl;
+        cout << permiso << endl;
         exit(EXIT_FAILURE);
     }
     return permiso;
 }
 
 /*
-Esta funcion retorna 2 valores:
-    - 1. true/false --> Si es que el usuario existe en BD.txt. Si el usuario existe retorna true y su permiso.
-    Si el usuario no existe retorna false y un mensaje diciendo que no existe en BD.txt.
-    - 2. permiso (admin, userGeneral, userRookie)
+Esta función se invoca en obtenerPermisosDesdeArchivos(). Se encarga de hacer 2 cosas en el mismo archivo. 
+Busca si el usuario u existe en la base de datos data/BD.txt, si existe retorna true y su permiso de usuario,
+si no existe el usuario u retorna false y un mensaje advirtiendo la situación.
+
+Por ejemplo en la base de datos data/BD.txt:
+    Clarita Admin --> retorna {True,Admin}, ya que Clarita existe.
+    Alexis userGeneral --> retorna {False, Usuario NO encontrado en la Base de Datos!!}, ya que Alexis no existe.
 */
 pair <bool, string> usuarioExiste(const string& nombreUsuario, const string& nombreArchivo) {
     ifstream archivo(nombreArchivo);
     string linea;
     while (getline(archivo, linea)) {
-        size_t espacio = linea.find(' ');
+        size_t espacio = linea.find(' '); // buscando el espacio, ya que la forma es userName Permiso
         if (espacio != string::npos) {
             string usuarioEnArchivo = linea.substr(0, espacio);
             if (usuarioEnArchivo == nombreUsuario) {
@@ -91,7 +114,14 @@ pair<bool, vector<string>> archivosCumplen1MB(const string& rutaIn, const string
     return make_pair(todosCumplen, archivosNoCumplen);
 }
 
-// Esta funcion convierte a vector el "vector" v ingresado como string en el parametro de entrada.
+/*
+Esta función convierte a vector el "vector" v ingresado como string en el parametro de entrada.
+
+Por ejemplo:
+    string "3,1,4,5,2,2,3" 
+
+    retorna vector<int> vec = {3,1,4,5,2,2,3}
+*/
 vector<int> convertirlo(const string& v) {
     vector<int> vec;
     string token = "";

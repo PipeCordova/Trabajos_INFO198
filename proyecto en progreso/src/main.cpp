@@ -1,5 +1,11 @@
 #include "../include/metodos.h"
 
+/* 
+Funcion principal, se encarga de obtener la entrada de argumentos, obtener el valor de las variables de
+entorno, realizar validaciones necesarias, crear los comandos para luego llamar a los procesos externos y al 
+final tener un while true que esta en constante ejecucion hasta que se selecciona la opcion 0 para salir del menú.
+*/
+
 
 int main(int argc, char *argv[]) {
     string u, v;
@@ -55,7 +61,7 @@ int main(int argc, char *argv[]) {
     bool veinteArchivos = !hayAlMenos20Archivos(rutaIn, ext);
 
     auto resultado = archivosCumplen1MB(rutaIn, ext);
-    bool todosCumplen = !resultado.first;
+    bool todosCumplen = !resultado.first; // todos los archivos de 1 MB
     vector<string> archivosNoCumplen = resultado.second;
 
     bool errorDetectado = false;
@@ -82,7 +88,7 @@ int main(int argc, char *argv[]) {
         } else {
             cerr << "Debe tener minimo 5 TOPK!!";
         }
-        cerr << "\n";
+        cout << "\n";
         if (!errorDetectado) {
             cerr << "Debe modificar la variable de entorno .env!!" << endl;
         }
@@ -147,7 +153,7 @@ int main(int argc, char *argv[]) {
         }
 
         cout << "Espere 7 segundos!!\n" << endl;
-        this_thread::sleep_for(chrono::seconds(7)); // Esperar 5 segundos y se limpia la consola
+        this_thread::sleep_for(chrono::seconds(7)); // Esperar 7 segundos y se limpia la consola
         system("clear");
     }  
 
