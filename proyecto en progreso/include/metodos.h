@@ -32,6 +32,7 @@ struct Opciones {
     ifstream archivoSalida;
     string rutaOut; // se agrego en la estructura para asi poder verificar si la carpeta out esta vacia o no
     string rutaIndex;
+    ifstream archivoIndex; // este se agrego para abrir el archivo index y comprobar si existe o no
     string comandoPrepararDatos;
     string comandoCrearIndice;
     string comandoBuscador;

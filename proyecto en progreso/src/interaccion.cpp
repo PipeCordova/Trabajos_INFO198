@@ -20,6 +20,9 @@ void ejecutarOpcion(const Opciones& opc) {
     const ifstream& archivoSalida = opc.archivoSalida;
     const string rutaOut = opc.rutaOut;
     const string rutaIndex = opc.rutaIndex;
+
+    const ifstream& archivoIndex = opc.archivoIndex;
+
     const string comandoPrepararDatos = opc.comandoPrepararDatos;
     const string comandoCrearIndice = opc.comandoCrearIndice;
     const string comandoBuscador = opc.comandoBuscador;
@@ -42,21 +45,21 @@ void ejecutarOpcion(const Opciones& opc) {
                 break;
             case 5:
                 if (archivoTexto.is_open()) {
-                    cout << "El archivo ya existe!!\n" << endl;
+                    cout << "El archivo ya existe en {" << f << "}." << endl;
                 } else { 
                     crearArchivo(f);
                 }
                 break;
             case 6:
                 if (!archivoTexto.is_open()) {
-                    cout << "El archivo NO existe!!\n" << endl;
+                    cout << "El archivo NO existe en {" << f << "}." << endl;
                 } else {
                     agregarLineaArchivo(f, t); // aqui se agrega texto al archivo de la carpeta ft
                 }
                 break;
             case 7:
                 if(archivoSalida.is_open()){
-                    cout << "El archivo ya existe!!\n" << endl;
+                    cout << "El archivo ya existe en {" << o << "}." << endl;
                 } else {
                     procesarArchivo(i, o);
                 }
@@ -65,8 +68,8 @@ void ejecutarOpcion(const Opciones& opc) {
                 realizarAccion8(rutaOut, comandoPrepararDatos);
                 break;
             case 9:
-                if (archivoSalida.is_open()){
-                    cerr << "El archivo ya existe!!" << endl;
+                if (archivoIndex.is_open()){
+                    cerr << "El archivo ya existe en {" << rutaIndex << "}." << endl;
                 } else {
                     realizarAccion9_10(rutaOut, comandoCrearIndice);
                 }
@@ -94,7 +97,7 @@ void realizarAccion8(const string& rutaOut, const string& comando) {
         if (it == fs::directory_iterator()) {
             system(comando.c_str());
         } else {
-            cout << "No puede sobreescribir en los archivos de la carpeta!!." << endl;
+            cout << "No puede sobreescribir en los archivos de la carpeta {" << rutaOut << "}." << endl;
         }
     } else {
         cout << "La ruta no es una carpeta válida. Revise su archivo .env!!" << endl;

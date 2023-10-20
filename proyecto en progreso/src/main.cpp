@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
     int nHilos = stoi(nThreads); // aqui se paso a int el string con el numero de threads
 
     opc.rutaIndex = getenv("INVERTED_INDEX_FILE");
-
+    
 
     string TopK = getenv("TOPK");
     int topK = stoi(TopK);
@@ -133,6 +133,7 @@ int main(int argc, char *argv[]) {
         ifstream archivo(rutaMenu);
         opc.archivoTexto.open(opc.f);
         opc.archivoSalida.open(opc.o);
+        opc.archivoIndex.open(opc.rutaIndex);
 
 
         cout << "Opciones disponibles:" << endl;
@@ -155,7 +156,10 @@ int main(int argc, char *argv[]) {
         cout << "Espere 7 segundos!!\n" << endl;
         this_thread::sleep_for(chrono::seconds(7)); // Esperar 7 segundos y se limpia la consola
         system("clear");
-    }  
+    }
+    opc.archivoTexto.close();
+    opc.archivoSalida.close();
+    opc.archivoIndex.close();
 
     cout << "Si va a ejecutar de nuevo el programa, verifique lo siguiente:" << endl;
     cout << "\t1) El archivo {" << opc.o << "} NO debe existir." << endl;
